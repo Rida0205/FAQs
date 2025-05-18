@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Deenway - الأسئلة المتكررة</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="https://icon2.cleanpng.com/20180511/qew/avr2j4pta.webp">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fbfc;
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+    .center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 30px 20px 0;
+    }
+    .logo {
+      font-size: 48px;
+      font-weight: 900;
+      background: linear-gradient(90deg, #1d3557, #457b9d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 2px;
+      user-select: none;
+      margin-bottom: 10px;
+    }
+    .tagline {
+      font-size: 20px;
+      font-style: italic;
+      color: #7f8c8d;
+      margin-bottom: 30px;
+      letter-spacing: 0.6px;
+      transition: opacity 0.6s ease;
+      min-height: 28px;
+      max-width: 90vw;
+    }
+    .browse-anyway {
+      font-size: 19px;
+      margin-bottom: 15px;
+      color: #2980b9;
+      font-weight: 700;
+      min-height: 29px;
+      transition: opacity 0.6s ease;
+      letter-spacing: 0.3px;
+    }
+    .language-select {
+      margin-bottom: 25px;
+      position: relative;
+      width: 220px;
+    }
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 100%;
+      padding: 12px 50px 12px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 30px;
+      background-color: #2980b9;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      outline: none;
+      transition: background-color 0.3s ease;
+    }
+    select:hover, select:focus {
+      background-color: #1d6fa5;
+    }
+    .language-select::after {
+      content: "▼";
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      color: white;
+      pointer-events: none;
+      font-size: 14px;
+      font-weight: 700;
+      user-select: none;
+    }
+    .sections {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 50px;
+    }
+    .sections a {
+      padding: 12px 25px;
+      border: 2px solid #2980b9;
+      border-radius: 25px;
+      text-decoration: none;
+      color: #2980b9;
+      font-weight: 700;
+      font-size: 16px;
+      transition: background 0.3s ease, color 0.3s ease;
+      min-width: 110px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .sections a:hover {
+      background: #2980b9;
+      color: #fff;
+    }
+    /* FAQ Styles */
+    .faqs-container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      max-width: 800px;
+      width: 100%;
+      padding: 28px 18px;
+      text-align: right;
+      margin-bottom: 40px;
+    }
+    .faq-item {
+      margin-bottom: 22px;
+      transition: all 0.3s;
+      border-bottom: 1px solid #eef2f4;
+      padding-bottom: 13px;
+    }
+    .faq-question {
+      font-weight: bold;
+      color: #1d3557;
+      font-size: 18px;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s;
+      padding-right: 18px;
+    }
+    .faq-question::before {
+      content: "؟";
+      color: #2980b9;
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .faq-answer {
+      font-size: 17px;
+      color: #34495e;
+      margin-top: 7px;
+      display: none;
+      padding-right: 8px;
+      transition: display 0.3s;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 36px;
+      }
+      .tagline {
+        font-size: 18px;
+      }
+      .faqs-container {
+        font-size: 15px;
+        padding: 18px 5px;
+      }
+      .language-select {
+        width: 100%;
+        max-width: 300px;
+      }
+      .browse-anyway {
+        font-size: 17px;
+      }
+      .sections {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 40px;
+        width: 100%;
+        max-width: 370px;
+      }
+      .sections a {
+        min-width: unset;
+        padding: 12px 0;
+        font-size: 15px;
+        border-radius: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <div class="logo">DEENWAY</div>
+    <div class="tagline" id="changingTagline">Guiding hearts to the truth</div>
+
+    <div class="language-select">
+      <select id="languageDropdown" onchange="changeLanguage(this.value)">
+        <option value="ar">العربية</option>
+        <option value="fr">Français</option>
+        <option value="en" selected>English</option>
+        <option value="es">Español</option>
+        <option value="de">Deutsch</option>
+        <option value="tr">Türkçe</option>
+        <option value="id">Bahasa</option>
+        <option value="ur">اردو</option>
+      </select>
+    </div>
+
+    <div class="browse-anyway" id="browsePhrase"></div>
+
+    <div class="faqs-container" id="faqsContainer">
+      <!-- الأسئلة ستظهر هنا -->
+    </div>
+
+    <div class="sections">
+      <a href="#">العربية</a>
+      <a href="#">Français</a>
+      <a href="#">English</a>
+      <a href="#">Español</a>
+      <a href="#">Deutsch</a>
+      <a href="#">Türkçe</a>
+      <a href="#">Bahasa</a>
+      <a href="#">اردو</a>
+    </div>
+  </div>
+  <script>
+    // Taglines
+    const taglines = {
+      ar: "تهدي القلوب إلى الحق",
+      fr: "Guider les cœurs vers la vérité",
+      en: "Guiding hearts to the truth",
+      es: "Guiando corazones hacia la verdad",
+      de: "Die Herzen zur Wahrheit führen",
+      tr: "Kalpleri gerçeğe yönlendirmek",
+      id: "Membimbing hati menuju kebenaran",
+      ur: "دلوں کی رہنمائی حق کی طرف"
+    };
+
+    // "تصفح موقعك كما تحب" بلغات متعددة
+    const browsePhrases = {
+      ar: "تصفح موقعك كما تحب",
+      fr: "Parcourez votre site comme vous aimez",
+      en: "Browse your site as you love",
+      es: "Navega tu sitio como te gusta",
+      de: "Durchstöbern Sie Ihre Seite, wie Sie möchten",
+      tr: "Sitenizde dilediğiniz gibi gezinin",
+      id: "Jelajahi situs Anda sesuka hati",
+      ur: "اپنی ویب سائٹ کو اپنی مرضی سے دریافت کریں"
+    };
+
+    // FAQS بعدة لغات
+    const faqs = {
+      ar: [
+        {
+          q: "ما هو مشروع Deenway؟",
+          a: "Deenway هو مشروع دعوي يهدف إلى إيصال الهداية بلغة القلوب والعقول، ويوفر محتوى بلغات متعددة."
+        },
+        {
+          q: "كيف يمكنني تغيير لغة الموقع؟",
+          a: "يمكنك تغيير اللغة من خلال قائمة اللغات أعلى الصفحة."
+        },
+        {
+          q: "هل المحتوى موثوق؟",
+          a: "نحرص دائمًا على مراجعة المحتوى بدقة والتأكد من مصادره، ونرحب بأي اقتراحات أو تصحيحات."
+        },
+        {
+          q: "هل يمكنني المساهمة في تطوير الموقع؟",
+          a: "بالطبع! يمكنك التواصل معنا عبر وسائل الاتصال الموجودة في الموقع للمساهمة أو التطوع."
+        }
+      ],
+      en: [
+        {
+          q: "What is Deenway project?",
+          a: "Deenway is a da'wah project aiming to deliver guidance in the language of hearts and minds, providing content in multiple languages."
+        },
+        {
+          q: "How can I change the website language?",
+          a: "You can change the language using the language dropdown menu at the top of the page."
+        },
+        {
+          q: "Is the content reliable?",
+          a: "We always review and verify our content thoroughly, and we welcome any suggestions or corrections."
+        },
+        {
+          q: "Can I contribute to the website?",
+          a: "Absolutely! You can contact us via the methods provided on the site to help or volunteer."
+        }
+      ],
+      fr: [
+        {
+          q: "Qu'est-ce que le projet Deenway ?",
+          a: "Deenway est un projet d'appel visant à transmettre la guidance dans la langue des cœurs et des esprits, avec du contenu multilingue."
+        },
+        {
+          q: "Comment puis-je changer la langue du site ?",
+          a: "Vous pouvez modifier la langue à l'aide du menu déroulant en haut de la page."
+        },
+        {
+          q: "Le contenu est-il fiable ?",
+          a: "Nous vérifions attentivement le contenu et accueillons volontiers toute suggestion ou correction."
+        },
+        {
+          q: "Puis-je contribuer au site ?",
+          a: "Bien sûr ! Contactez-nous via les moyens indiqués sur le site pour participer ou faire du bénévolat."
+        }
+      ],
+      es: [
+        {
+          q: "¿Qué es el proyecto Deenway?",
+          a: "Deenway es un proyecto de da‘wah que busca transmitir la guía en el idioma de los corazones y las mentes, ofreciendo contenido en varios idiomas."
+        },
+        {
+          q: "¿Cómo cambio el idioma del sitio?",
+          a: "Puedes cambiar el idioma usando el menú desplegable en la parte superior de la página."
+        },
+        {
+          q: "¿El contenido es confiable?",
+          a: "Siempre revisamos y verificamos cuidadosamente nuestro contenido, y agradecemos cualquier sugerencia o corrección."
+        },
+        {
+          q: "¿Puedo contribuir al sitio?",
+          a: "¡Por supuesto! Puedes contactarnos mediante los medios que aparecen en el sitio para ayudar o colaborar."
+        }
+      ],
+      de: [
+        {
+          q: "Was ist das Deenway-Projekt?",
+          a: "Deenway ist ein Da'wah-Projekt, das darauf abzielt, Führung in der Sprache der Herzen und des Verstandes zu vermitteln und Inhalte in mehreren Sprachen anzubieten."
+        },
+        {
+          q: "Wie kann ich die Sprache der Website ändern?",
+          a: "Sie können die Sprache über das Dropdown-Menü oben auf der Seite ändern."
+        },
+        {
+          q: "Ist der Inhalt zuverlässig?",
+          a: "Wir prüfen und verifizieren unsere Inhalte stets sorgfältig und freuen uns über Anregungen oder Korrekturen."
+        },
+        {
+          q: "Kann ich zur Website beitragen?",
+          a: "Natürlich! Kontaktieren Sie uns über die angegebenen Wege auf der Website, um zu helfen oder sich zu engagieren."
+        }
+      ],
+      tr: [
+        {
+          q: "Deenway projesi nedir?",
+          a: "Deenway, kalplerin ve akılların diliyle rehberlik sunmayı amaçlayan ve çok dilli içerik sağlayan bir davet projesidir."
+        },
+        {
+          q: "Sitenin dilini nasıl değiştirebilirim?",
+          a: "Sayfanın üst kısmındaki dil açılır menüsünü kullanarak dili değiştirebilirsiniz."
+        },
+        {
+          q: "İçerik güvenilir mi?",
+          a: "İçeriğimizi her zaman titizlikle gözden geçiriyor ve doğruluyoruz. Her türlü öneri veya düzeltmeye açığız."
+        },
+        {
+          q: "Siteye katkıda bulunabilir miyim?",
+          a: "Elbette! Yardımcı olmak veya gönüllü olmak için sitede belirtilen iletişim yolları aracılığıyla bize ulaşabilirsiniz."
+        }
+      ],
+      id: [
+        {
+          q: "Apa itu proyek Deenway?",
+          a: "Deenway adalah proyek dakwah yang bertujuan menyampaikan petunjuk dengan bahasa hati dan akal, serta menyediakan konten dalam berbagai bahasa."
+        },
+        {
+          q: "Bagaimana cara mengubah bahasa situs?",
+          a: "Anda dapat mengganti bahasa melalui menu dropdown di bagian atas halaman."
+        },
+        {
+          q: "Apakah kontennya terpercaya?",
+          a: "Kami selalu meninjau dan memverifikasi konten kami dengan cermat, dan menyambut saran atau koreksi apa pun."
+        },
+        {
+          q: "Bisakah saya berkontribusi ke situs ini?",
+          a: "Tentu! Anda dapat menghubungi kami melalui metode yang tersedia di situs untuk membantu atau menjadi relawan."
+        }
+      ],
+      ur: [
+        {
+          q: "Deenway پروجیکٹ کیا ہے؟",
+          a: "Deenway ایک دعوتی منصوبہ ہے جو دلوں اور عقل کی زبان میں ہدایت پہنچانے اور مختلف زبانوں میں مواد فراہم کرنے کے لیے کوشاں ہے۔"
+        },
+        {
+          q: "میں ویب سائٹ کی زبان کیسے تبدیل کروں؟",
+          a: "آپ صفحے کے اوپر موجود زبان کے ڈراپ ڈاؤن مینو سے زبان تبدیل کر سکتے ہیں۔"
+        },
+        {
+          q: "کیا مواد قابلِ اعتماد ہے؟",
+          a: "ہم ہمیشہ اپنے مواد کا بغور جائزہ لیتے اور اس کی تصدیق کرتے ہیں، اور کسی بھی تجویز یا تصحیح کا خیرمقدم کرتے ہیں۔"
+        },
+        {
+          q: "کیا میں ویب سائٹ میں حصہ لے سکتا ہوں؟",
+          a: "بالکل! آپ سائٹ پر دیے گئے ذرائع سے ہم سے رابطہ کر کے مدد یا رضاکارانہ خدمات انجام دے سکتے ہیں۔"
+        }
+      ]
+    };
+
+    let langs = Object.keys(taglines);
+
+    const taglineEl = document.getElementById("changingTagline");
+    const languageDropdown = document.getElementById("languageDropdown");
+    const browsePhraseEl = document.getElementById("browsePhrase");
+    const faqsContainer = document.getElementById("faqsContainer");
+
+    let currentLang = languageDropdown.value || 'en';
+
+    function updateTagline(lang) {
+      taglineEl.style.opacity = 0;
+      setTimeout(() => {
+        taglineEl.textContent = taglines[lang] || taglines['en'];
+        taglineEl.style.opacity = 1;
+      }, 400);
+    }
+
+    function updateBrowsePhrase(lang) {
+      browsePhraseEl.style.opacity = 0;
+      setTimeout(() => {
+        browsePhraseEl.textContent = browsePhrases[lang] || browsePhrases['en'];
+        browsePhraseEl.style.opacity = 1;
+      }, 400);
+    }
+
+    function renderFaqs(lang) {
+      const faqsList = faqs[lang] || faqs['en'];
+      faqsContainer.innerHTML = faqsList.map((faq, i) => `
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">${faq.q}</div>
+          <div class="faq-answer">${faq.a}</div>
+        </div>
+      `).join('');
+    }
+
+    // FAQ expand/collapse
+    window.toggleFaq = function(item) {
+      item.classList.toggle('open');
+    }
+
+    function changeLanguage(lang) {
+      currentLang = lang;
+      languageDropdown.value = lang;
+      taglineIndex = langs.indexOf(lang);
+      browsePhraseIndex = langs.indexOf(lang);
+      updateTagline(lang);
+      updateBrowsePhrase(lang);
+      renderFaqs(lang);
+    }
+
+    // البداية
+    updateTagline(currentLang);
+    updateBrowsePhrase(currentLang);
+    renderFaqs(currentLang);
+
+    // التبديل التلقائي للعبارة والشعار
+    let taglineIndex = langs.indexOf(currentLang);
+    setInterval(() => {
+      taglineIndex = (taglineIndex + 1) % langs.length;
+      updateTagline(langs[taglineIndex]);
+    }, 4000);
+
+    // التبديل التلقائي لعبارة "تصفح موقعك كما تحب"
+    let browsePhraseIndex = langs.indexOf(currentLang);
+    setInterval(() => {
+      browsePhraseIndex = (browsePhraseIndex + 1) % langs.length;
+      updateBrowsePhrase(langs[browsePhraseIndex]);
+    }, 4000);
+  </script>
+</body>
+</html>
