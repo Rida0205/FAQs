@@ -47,15 +47,6 @@
       min-height: 28px;
       max-width: 90vw;
     }
-    .browse-anyway {
-      font-size: 19px;
-      margin-bottom: 25px;
-      color: #2980b9;
-      font-weight: 700;
-      min-height: 29px;
-      transition: opacity 0.6s ease;
-      letter-spacing: 0.3px;
-    }
     .language-select {
       margin-bottom: 25px;
       position: relative;
@@ -92,6 +83,15 @@
       font-size: 14px;
       font-weight: 700;
       user-select: none;
+    }
+    .browse-anyway {
+      font-size: 19px;
+      margin-bottom: 15px;
+      color: #2980b9;
+      font-weight: 700;
+      min-height: 29px;
+      transition: opacity 0.6s ease;
+      letter-spacing: 0.3px;
     }
     .sections {
       display: flex;
@@ -235,10 +235,8 @@
         <option value="ur">اردو</option>
       </select>
     </div>
+    <!-- انقل العبارة هنا قبل ازرار اللغة -->
     <div class="browse-anyway" id="browsePhrase"></div>
-    <div class="faqs-container" id="faqsContainer">
-      <!-- الأسئلة ستظهر هنا -->
-    </div>
     <div class="sections">
       <a href="#">العربية</a>
       <a href="#">Français</a>
@@ -248,6 +246,9 @@
       <a href="#">Türkçe</a>
       <a href="#">Bahasa</a>
       <a href="#">اردو</a>
+    </div>
+    <div class="faqs-container" id="faqsContainer">
+      <!-- الأسئلة ستظهر هنا -->
     </div>
   </div>
   <script>
