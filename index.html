@@ -49,7 +49,7 @@
     }
     .browse-anyway {
       font-size: 19px;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
       color: #2980b9;
       font-weight: 700;
       min-height: 29px;
@@ -119,20 +119,23 @@
     }
     /* FAQ Styles */
     .faqs-container {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
       max-width: 800px;
       width: 100%;
-      padding: 28px 18px;
+      padding: 0 6px;
       text-align: right;
       margin-bottom: 40px;
+      background: none !important;
+      box-shadow: none !important;
     }
     .faq-item {
       margin-bottom: 22px;
-      transition: all 0.3s;
       border-bottom: 1px solid #eef2f4;
       padding-bottom: 13px;
+      background: none !important;
+      box-shadow: none !important;
+      transition: all 0.3s;
+      direction: inherit;
+      text-align: inherit;
     }
     .faq-question {
       font-weight: bold;
@@ -142,6 +145,9 @@
       position: relative;
       transition: color 0.3s;
       padding-right: 18px;
+      padding-left: 18px;
+      direction: inherit;
+      text-align: inherit;
     }
     .faq-question::before {
       content: "؟";
@@ -151,6 +157,14 @@
       top: 0;
       font-size: 18px;
       font-weight: bold;
+      display: inline-block;
+      direction: inherit;
+    }
+    .ltr .faq-question::before {
+      content: "?";
+      left: 0;
+      right: unset;
+      direction: inherit;
     }
     .faq-answer {
       font-size: 17px;
@@ -158,10 +172,17 @@
       margin-top: 7px;
       display: none;
       padding-right: 8px;
+      padding-left: 8px;
       transition: display 0.3s;
+      direction: inherit;
+      text-align: inherit;
     }
     .faq-item.open .faq-answer {
       display: block;
+    }
+    .ltr {
+      direction: ltr !important;
+      text-align: left !important;
     }
     @media (max-width: 600px) {
       .logo {
@@ -172,7 +193,7 @@
       }
       .faqs-container {
         font-size: 15px;
-        padding: 18px 5px;
+        padding: 0 0px;
       }
       .language-select {
         width: 100%;
@@ -202,7 +223,6 @@
   <div class="center">
     <div class="logo">DEENWAY</div>
     <div class="tagline" id="changingTagline">Guiding hearts to the truth</div>
-
     <div class="language-select">
       <select id="languageDropdown" onchange="changeLanguage(this.value)">
         <option value="ar">العربية</option>
@@ -215,13 +235,10 @@
         <option value="ur">اردو</option>
       </select>
     </div>
-
     <div class="browse-anyway" id="browsePhrase"></div>
-
     <div class="faqs-container" id="faqsContainer">
       <!-- الأسئلة ستظهر هنا -->
     </div>
-
     <div class="sections">
       <a href="#">العربية</a>
       <a href="#">Français</a>
@@ -246,16 +263,16 @@
       ur: "دلوں کی رہنمائی حق کی طرف"
     };
 
-    // "تصفح موقعك كما تحب" بلغات متعددة
+    // "تصفح الموقع بالطريقة التي تفضلها" بلغات متعددة
     const browsePhrases = {
-      ar: "تصفح موقعك كما تحب",
-      fr: "Parcourez votre site comme vous aimez",
-      en: "Browse your site as you love",
-      es: "Navega tu sitio como te gusta",
-      de: "Durchstöbern Sie Ihre Seite, wie Sie möchten",
-      tr: "Sitenizde dilediğiniz gibi gezinin",
-      id: "Jelajahi situs Anda sesuka hati",
-      ur: "اپنی ویب سائٹ کو اپنی مرضی سے دریافت کریں"
+      ar: "تصفح الموقع بالطريقة التي تفضلها",
+      fr: "Parcourez le site comme vous aimez",
+      en: "Browse the site as you like",
+      es: "Navega el sitio como prefieras",
+      de: "Durchstöbern Sie die Seite, wie Sie möchten",
+      tr: "Siteyi dilediğiniz gibi gezinin",
+      id: "Jelajahi situs ini sesuai keinginan Anda",
+      ur: "ویب سائٹ کو اپنی پسند کے مطابق دریافت کریں"
     };
 
     // FAQS بعدة لغات
@@ -433,10 +450,12 @@
 
     function renderFaqs(lang) {
       const faqsList = faqs[lang] || faqs['en'];
-      faqsContainer.innerHTML = faqsList.map((faq, i) => `
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-question">${faq.q}</div>
-          <div class="faq-answer">${faq.a}</div>
+      // Determine if we need ltr class for foreign languages
+      const isLtr = ['en','fr','es','de','tr','id'].includes(lang);
+      faqsContainer.innerHTML = faqsList.map((faq) => `
+        <div class="faq-item${isLtr ? ' ltr' : ''}" onclick="toggleFaq(this)">
+          <div class="faq-question${isLtr ? ' ltr' : ''}">${faq.q}</div>
+          <div class="faq-answer${isLtr ? ' ltr' : ''}">${faq.a}</div>
         </div>
       `).join('');
     }
@@ -468,7 +487,7 @@
       updateTagline(langs[taglineIndex]);
     }, 4000);
 
-    // التبديل التلقائي لعبارة "تصفح موقعك كما تحب"
+    // التبديل التلقائي لعبارة "تصفح الموقع بالطريقة التي تفضلها"
     let browsePhraseIndex = langs.indexOf(currentLang);
     setInterval(() => {
       browsePhraseIndex = (browsePhraseIndex + 1) % langs.length;
