@@ -134,30 +134,6 @@
       transition: opacity 0.6s ease;
       letter-spacing: 0.3px;
     }
-    .sections {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 18px;
-    }
-    .sections a {
-      padding: 12px 25px;
-      border: 2px solid #2980b9;
-      border-radius: 25px;
-      text-decoration: none;
-      color: #2980b9;
-      font-weight: 700;
-      font-size: 16px;
-      transition: background 0.3s ease, color 0.3s ease;
-      min-width: 110px;
-      text-align: center;
-      box-sizing: border-box;
-    }
-    .sections a:hover {
-      background: #2980b9;
-      color: #fff;
-    }
     .language-select {
       position: relative;
       width: 180px;
@@ -217,20 +193,6 @@
       .browse-anyway {
         font-size: 17px;
       }
-      .sections {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        margin-bottom: 18px;
-        width: 100%;
-        max-width: 370px;
-      }
-      .sections a {
-        min-width: unset;
-        padding: 12px 0;
-        font-size: 15px;
-        border-radius: 18px;
-      }
     }
   </style>
 </head>
@@ -244,28 +206,6 @@
     <!-- الفوتر -->
     <div class="footer">
       <div class="browse-anyway" id="browsePhrase"></div>
-      <div class="sections">
-        <a href="#">العربية</a>
-        <a href="#">Français</a>
-        <a href="#">English</a>
-        <a href="#">Español</a>
-        <a href="#">Deutsch</a>
-        <a href="#">Türkçe</a>
-        <a href="#">Bahasa</a>
-        <a href="#">اردو</a>
-      </div>
-      <div class="language-select">
-        <select id="languageDropdown" onchange="changeLanguage(this.value)">
-          <option value="ar">العربية</option>
-          <option value="fr">Français</option>
-          <option value="en" selected>English</option>
-          <option value="es">Español</option>
-          <option value="de">Deutsch</option>
-          <option value="tr">Türkçe</option>
-          <option value="id">Bahasa</option>
-          <option value="ur">اردو</option>
-        </select>
-      </div>
     </div>
   </div>
   <script>
@@ -441,14 +381,12 @@
       ]
     };
 
-    let langs = Object.keys(taglines);
+    // يمكنك تغيير اللغة الافتراضية هنا
+    let currentLang = 'ar';
 
     const taglineEl = document.getElementById("changingTagline");
-    const languageDropdown = document.getElementById("languageDropdown");
     const browsePhraseEl = document.getElementById("browsePhrase");
     const faqsContainer = document.getElementById("faqsContainer");
-
-    let currentLang = languageDropdown.value || 'en';
 
     function updateTagline(lang) {
       taglineEl.style.opacity = 0;
@@ -483,33 +421,22 @@
       item.classList.toggle('open');
     }
 
-    function changeLanguage(lang) {
-      currentLang = lang;
-      languageDropdown.value = lang;
-      taglineIndex = langs.indexOf(lang);
-      browsePhraseIndex = langs.indexOf(lang);
-      updateTagline(lang);
-      updateBrowsePhrase(lang);
-      renderFaqs(lang);
-    }
-
     // البداية
     updateTagline(currentLang);
     updateBrowsePhrase(currentLang);
     renderFaqs(currentLang);
 
     // التبديل التلقائي للعبارة والشعار
-    let taglineIndex = langs.indexOf(currentLang);
+    let taglineIndex = Object.keys(taglines).indexOf(currentLang);
     setInterval(() => {
-      taglineIndex = (taglineIndex + 1) % langs.length;
-      updateTagline(langs[taglineIndex]);
+      taglineIndex = (taglineIndex + 1) % Object.keys(taglines).length;
+      updateTagline(Object.keys(taglines)[taglineIndex]);
     }, 4000);
 
-    // التبديل التلقائي لعبارة "تصفح الموقع بالطريقة التي تفضلها"
-    let browsePhraseIndex = langs.indexOf(currentLang);
+    let browsePhraseIndex = Object.keys(browsePhrases).indexOf(currentLang);
     setInterval(() => {
-      browsePhraseIndex = (browsePhraseIndex + 1) % langs.length;
-      updateBrowsePhrase(langs[browsePhraseIndex]);
+      browsePhraseIndex = (browsePhraseIndex + 1) % Object.keys(browsePhrases).length;
+      updateBrowsePhrase(Object.keys(browsePhrases)[browsePhraseIndex]);
     }, 4000);
   </script>
 </body>
