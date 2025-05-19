@@ -6,203 +6,65 @@
   <title>Deenway - الأسئلة المتكررة</title>
   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1705/1705004.png">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fbfc;
-      color: #2c3e50;
-      line-height: 1.6;
-    }
-    .center {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      min-height: 100vh;
-      padding: 30px 20px 0;
-    }
-    .logo {
-      font-size: 48px;
-      font-weight: 900;
-      background: linear-gradient(90deg, #1d3557, #457b9d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: 2px;
-      user-select: none;
-      margin-bottom: 10px;
-      margin-top: 15px;
-    }
-    .tagline {
-      font-size: 20px;
-      font-style: italic;
-      color: #7f8c8d;
-      margin-bottom: 30px;
-      letter-spacing: 0.6px;
-      transition: opacity 0.6s ease;
-      min-height: 28px;
-      max-width: 90vw;
-    }
-    .browse-anyway {
-      font-size: 19px;
-      margin-bottom: 15px;
-      color: #2980b9;
-      font-weight: 700;
-      min-height: 29px;
-      transition: opacity 0.6s ease;
-      letter-spacing: 0.3px;
-    }
-    .ltr {
-      direction: ltr;
-      text-align: left;
-    }
-    .language-select {
-      margin-bottom: 25px;
-      position: relative;
-      width: 220px;
-    }
-    select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      width: 100%;
-      padding: 12px 50px 12px 20px;
-      font-size: 16px;
-      font-weight: 600;
-      border: none;
-      border-radius: 30px;
-      background-color: #2980b9;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      outline: none;
-      transition: background-color 0.3s ease;
-    }
-    select:hover, select:focus {
-      background-color: #1d6fa5;
-    }
-    .language-select::after {
-      content: "▼";
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      color: white;
-      pointer-events: none;
-      font-size: 14px;
-      font-weight: 700;
-      user-select: none;
-    }
-    .faqs-container {
-      max-width: 800px;
-      width: 100%;
-      padding: 0 6px;
-      text-align: right;
-      margin-bottom: 40px;
-    }
-    .faq-item {
-      margin-bottom: 22px;
-      border-bottom: 1px solid #eef2f4;
-      padding-bottom: 13px;
-      transition: all 0.3s;
-      direction: inherit;
-      text-align: inherit;
-      background: none !important;
-    }
-    .faq-question {
-      font-weight: bold;
-      color: #1d3557;
-      font-size: 18px;
-      cursor: pointer;
-      position: relative;
-      transition: color 0.3s;
-      padding-right: 18px;
-      padding-left: 18px;
-      direction: inherit;
-      text-align: inherit;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f9fbfc; color: #2c3e50; line-height: 1.6; }
+    .center { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; min-height: 100vh; padding: 30px 20px 0; }
+    .logo { font-size: 48px; font-weight: 900; background: linear-gradient(90deg, #1d3557, #457b9d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 2px; user-select: none; margin-bottom: 10px; margin-top: 15px; }
+    .tagline { font-size: 20px; font-style: italic; color: #7f8c8d; margin-bottom: 30px; letter-spacing: 0.6px; transition: opacity 0.6s ease; min-height: 28px; max-width: 90vw; }
+    .browse-phrase { font-size: 18px; color: #2176ae; margin-top: 0; margin-bottom: 9px; min-height: 28px; font-weight: 600; transition: opacity 0.5s; }
+    .language-select { position: relative; width: 180px; margin-bottom: 20px; margin-top: 0; }
+    select { -webkit-appearance: none; -moz-appearance: none; appearance: none; width: 100%; padding: 10px 45px 10px 18px; font-size: 15px; font-weight: 600; border: none; border-radius: 30px; background-color: #2980b9; color: white; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09); outline: none; transition: background-color 0.3s ease; }
+    select:hover, select:focus { background-color: #1d6fa5; }
+    .language-select::after { content: "▼"; position: absolute; top: 50%; right: 15px; transform: translateY(-50%); color: white; pointer-events: none; font-size: 13px; font-weight: 700; user-select: none; }
+    .faqs-container { max-width: 800px; width: 100%; padding: 0 6px; text-align: right; margin-bottom: 40px; }
+    .faq-item { margin-bottom: 22px; border-bottom: 1px solid #eef2f4; padding-bottom: 13px; transition: all 0.3s; direction: inherit; text-align: inherit; background: none !important; }
+    .faq-question { font-weight: bold; color: #1d3557; font-size: 18px; cursor: pointer; position: relative; transition: color 0.3s; padding-right: 18px; padding-left: 18px; direction: inherit; text-align: inherit; }
     .faq-question .qmark-ar { margin-right: 0.25em; }
     .faq-question .qmark-ltr { margin-left: 0.25em; }
-    .faq-answer {
-      font-size: 17px;
-      color: #34495e;
-      margin-top: 7px;
-      display: none;
-      padding-right: 8px;
-      padding-left: 8px;
-      transition: display 0.3s;
-      direction: inherit;
-      text-align: inherit;
-    }
+    .faq-answer { font-size: 17px; color: #34495e; margin-top: 7px; display: none; padding-right: 8px; padding-left: 8px; transition: display 0.3s; direction: inherit; text-align: inherit; }
     .faq-item.open .faq-answer { display: block; }
     .ltr { direction: ltr !important; text-align: left !important; }
+    .footer { width: 100%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; margin-top: 25px; margin-bottom: 15px; }
     .subdomain-buttons {
       display: flex;
       flex-wrap: wrap;
+      gap: 8px;
       justify-content: center;
-      gap: 16px;
-      margin-bottom: 50px;
       margin-top: 10px;
-      width: 100%;
-      max-width: 600px;
+      margin-bottom: 15px;
     }
     .subdomain-btn {
-      display: inline-block;
-      min-width: 120px;
-      padding: 15px 22px;
-      border-radius: 32px;
+      padding: 7px 15px;
+      border-radius: 18px;
       border: none;
-      font-weight: 700;
-      font-size: 19px;
+      font-weight: 600;
+      font-size: 15px;
       cursor: pointer;
-      background: linear-gradient(90deg, #2980b9 0%, #457b9d 100%);
-      color: #fff;
-      box-shadow: 0 2px 12px rgba(41, 128, 185, 0.10);
-      transition: background 0.2s, transform 0.17s, box-shadow 0.22s;
+      background: #e1e8ed;
+      color: #1d3557;
+      transition: background 0.2s, color 0.2s;
+      min-width: 44px;
       outline: none;
-      margin-bottom: 4px;
-      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
       text-decoration: none;
-      letter-spacing: 0.2px;
-      border: 2px solid #2980b9;
     }
     .subdomain-btn:hover,
     .subdomain-btn:focus {
-      background: linear-gradient(90deg, #1d3557 0%, #2980b9 100%);
+      background: #2980b9;
       color: #fff;
-      transform: translateY(-3px) scale(1.035);
-      box-shadow: 0 6px 20px rgba(41,128,185,0.15);
       text-decoration: none;
     }
-    @media (max-width: 700px) {
-      .subdomain-buttons {
-        gap: 8px;
-        max-width: 98vw;
-      }
-      .subdomain-btn {
-        min-width: 90px;
-        font-size: 15px;
-        padding: 11px 7px;
-      }
-    }
-    @media (max-width: 480px) {
-      .subdomain-buttons {
-        flex-direction: column;
-        gap: 8px;
-        padding: 0 0px;
-      }
-      .subdomain-btn {
-        width: 97%;
-        min-width: unset;
-        font-size: 15px;
-        padding: 11px 0;
-        margin: 0 auto;
-        box-sizing: border-box;
-      }
+    @media (max-width: 600px) {
+      .logo { font-size: 36px; }
+      .tagline { font-size: 18px; }
+      .faqs-container { font-size: 15px; padding: 0 0px; }
+      .footer { max-width: 100vw; }
+      .language-select { width: 100%; max-width: 150px; }
+      .subdomain-buttons { gap: 5px; }
+      .subdomain-btn { font-size: 13px; padding: 6px 10px; }
+      .browse-phrase { font-size: 15px; }
     }
   </style>
 </head>
@@ -214,7 +76,7 @@
       <select id="languageDropdown">
         <option value="ar">العربية</option>
         <option value="fr">Français</option>
-        <option value="en" selected>English</option>
+        <option value="en">English</option>
         <option value="es">Español</option>
         <option value="de">Deutsch</option>
         <option value="tr">Türkçe</option>
@@ -223,8 +85,9 @@
       </select>
     </div>
     <div class="faqs-container" id="faqsContainer"></div>
-    <div class="browse-anyway" id="browsePhrase"></div>
+    <div class="browse-phrase" id="browsePhrase"></div>
     <div class="subdomain-buttons" id="subdomainButtons"></div>
+    <div class="footer"></div>
   </div>
   <script>
     // Taglines for 8 languages
@@ -239,54 +102,77 @@
       ur: "دلوں کی رہنمائی حق کی طرف"
     };
 
-    // Subdomain navigation buttons (labels only)
+    // Subdomain navigation buttons
     const subdomains = [
-      { code: 'ar', label: 'العربية', url: 'https://offdeenway.org' },
-      { code: 'fr', label: 'Français', url: 'https://fr.offdeenway.org' },
-      { code: 'en', label: 'English', url: 'https://en.offdeenway.org' },
-      { code: 'es', label: 'Español', url: 'https://es.offdeenway.org' },
-      { code: 'tr', label: 'Türkçe', url: 'https://tr.offdeenway.org' },
-      { code: 'de', label: 'Deutsch', url: 'https://de.offdeenway.org' },
-      { code: 'id', label: 'Bahasa', url: 'https://id.offdeenway.org' },
-      { code: 'ur', label: 'اردو', url: 'https://ur.offdeenway.org' }
+      { code: 'ar', label: 'العربية', flag: '🌍', url: 'https://offdeenway.org' },
+      { code: 'fr', label: 'Français', flag: '🇫🇷', url: 'https://fr.offdeenway.org' },
+      { code: 'en', label: 'English', flag: '🇬🇧', url: 'https://en.offdeenway.org' },
+      { code: 'es', label: 'Español', flag: '🇪🇸', url: 'https://es.offdeenway.org' },
+      { code: 'tr', label: 'Türkçe', flag: '🇹🇷', url: 'https://tr.offdeenway.org' },
+      { code: 'de', label: 'Deutsch', flag: '🇩🇪', url: 'https://de.offdeenway.org' },
+      { code: 'id', label: 'Bahasa', flag: '🇮🇩', url: 'https://id.offdeenway.org' },
+      { code: 'ur', label: 'اردو', flag: '🇵🇰', url: 'https://ur.offdeenway.org' }
     ];
 
-    // عبارات "تصفح موقعك كما تحب" بثمان لغات
+    // Browsing phrase translations
     const browsePhrases = {
       ar: "تصفح موقعك كما تحب",
-      fr: "Parcourez votre site comme vous aimez",
-      en: "Browse your site as you love",
-      es: "Navega tu sitio como te gusta",
-      de: "Durchstöbern Sie Ihre Seite, wie Sie möchten",
+      fr: "Parcourez votre site comme vous le souhaitez",
+      en: "Browse your site as you like",
+      es: "Navega por tu sitio como desees",
+      de: "Surfen Sie auf Ihrer Seite, wie Sie möchten",
       tr: "Sitenizde dilediğiniz gibi gezinin",
-      id: "Jelajahi situs Anda sesuka hati",
-      ur: "اپنی ویب سائٹ کو اپنی مرضی سے دریافت کریں"
+      id: "Jelajahi situs Anda sesuka Anda",
+      ur: "اپنی سائٹ کو اپنی پسند کے مطابق دیکھیں"
     };
 
-    // مثال أسئلة (يمكنك استبدالها بكامل قائمة الأسئلة)
+    // FAQs for all languages (قصرت هنا - أكمل كما بالردود السابقة)
     const faqs = {
       ar: [
         {q:"هل يمكنني طرح سؤال ديني خاص بي",a:"نعم، يمكنك إرسال سؤالك أو استفسارك عبر البريد الإلكتروني التالي: contact@offdeenway.org وسنرد عليك أو نحيلك إلى العلماء الموثوقين."},
-        {q:"كيف يمكنني تغيير لغة الموقع",a:`لتصفح الموقع بلغتك المفضلة، استخدم الرابط الفرعي لكل لغة:<br>العربية: offdeenway.org<br>الفرنسية: fr.offdeenway.org<br>الإنجليزية: en.offdeenway.org<br>الإسبانية: es.offdeenway.org<br>التركية: tr.offdeenway.org<br>الألمانية: de.offdeenway.org<br>الإندونيسية: id.offdeenway.org<br>الأوردو: ur.offdeenway.org`},
-        {q:"ما هو الغرض من هذا الموقع الديني",a:"نسعى لنشر المعرفة الإسلامية الصحيحة وتقريب الناس من كتاب الله وسنة نبيه ﷺ، مع التركيز على التوعية والتزكية والقيم الأصيلة."}
+        {q:"كيف يمكنني تغيير لغة الموقع",a:`لتصفح الموقع بلغتك المفضلة، استخدم الرابط الفرعي لكل لغة:<br>🌍 العربية: offdeenway.org<br>🇫🇷 الفرنسية: fr.offdeenway.org<br>🇬🇧 الإنجليزية: en.offdeenway.org<br>🇪🇸 الإسبانية: es.offdeenway.org<br>🇹🇷 التركية: tr.offdeenway.org<br>🇩🇪 الألمانية: de.offdeenway.org<br>🇮🇩 الإندونيسية: id.offdeenway.org<br>🇵🇰 الأوردو: ur.offdeenway.org`},
+        {q:"ما هو الغرض من هذا الموقع الديني",a:"نسعى لنشر المعرفة الإسلامية الصحيحة وتقريب الناس من كتاب الله وسنة نبيه ﷺ، مع التركيز على التوعية والتزكية والقيم الأصيلة."},
+        {q:"هل تنتمون إلى تيار أو جماعة معينة",a:"لا ننتمي لأي جماعة أو تيار، بل ندعو إلى الإسلام كما جاء في القرآن والسنة."},
+        {q:"هل تعتمدون على فتاوى محددة",a:"نعتمد على فتاوى العلماء الثقات والمصادر الشرعية المعتمدة."},
+        {q:"كيف يمكنني دعم هذا المشروع",a:"يمكنك دعمنا بالدعاء أو نشر المحتوى أو مشاركته مع الآخرين."},
+        {q:"هل يمكنني استخدام محتوى الموقع في مشروعي أو قناتي",a:"نعم، بشرط ذكر المصدر وعدم تغيير المعنى أو استخدامه في سياق غير شرعي."},
+        {q:"ما الوسائل التي تساعدني على الثبات على ديني",a:"المحافظة على الصلاة، مرافقة الصالحين، كثرة الذكر وقراءة القرآن، والابتعاد عن الفتن."},
+        {q:"كيف أبدأ في تعلم ديني بشكل صحيح",a:"ابدأ بتعلم العقيدة الصحيحة، ثم فقه العبادات، وداوم على قراءة القرآن مع تفسير ميسر، وابتعد عن المصادر غير الموثوقة."},
+        {q:"ما الفرق بين الإسلام والإيمان والإحسان",a:"الإسلام: الأعمال الظاهرة، الإيمان: التصديق القلبي، الإحسان: أن تعبد الله كأنك تراه. وهي مراتب الدين الثلاثة."},
+        {q:"هل من نصائح لتدبر القرآن الكريم",a:"اقرأ ببطء وتأمل المعاني، اربط الآيات بحياتك، استخدم تفسيرًا ميسرًا، وادعُ الله أن يفتح قلبك."},
+        {q:"ما حكم نشر المحتوى الديني على وسائل التواصل",a:"نشر المحتوى الصحيح من الكتاب والسنة أمر عظيم بشرط التأكد من صحة المعلومات وتجنب الأحاديث الضعيفة."},
+        {q:"كيف أفرق بين الحديث الصحيح والضعيف",a:"ارجع إلى كتب الحديث أو العلماء المتخصصين. نحن نتحرى صحة الأحاديث ونبين درجتها عند الحاجة."},
+        {q:"هل يشترط التفرغ الكامل لطلب العلم الشرعي",a:"ليس شرطًا، يمكنك التعلم تدريجيًا حسب وقتك، الأهم هو الاستمرارية."},
+        {q:"كيف أتعامل مع الشبهات عن الإسلام",a:"لا تأخذ الشبهات من غير المتخصصين وراجع أهل العلم الموثوقين، فكل شبهة لها جواب عند العلماء."}
       ],
       en: [
         {q:"Can I ask my own religious question",a:"Yes, you can send your question or inquiry to: contact@offdeenway.org and we will reply or refer you to trusted scholars."},
-        {q:"How can I change the website language",a:`To browse in your preferred language, use the specific subdomain:<br>Arabic: offdeenway.org<br>French: fr.offdeenway.org<br>English: en.offdeenway.org<br>Spanish: es.offdeenway.org<br>Turkish: tr.offdeenway.org<br>German: de.offdeenway.org<br>Indonesian: id.offdeenway.org<br>Urdu: ur.offdeenway.org`},
-        {q:"What is the purpose of this religious website",a:"We aim to spread authentic Islamic knowledge and bring people closer to the Quran and the Sunnah, focusing on awareness, purification, and original Islamic values."}
+        {q:"How can I change the website language",a:`To browse in your preferred language, use the specific subdomain:<br>🌍 Arabic: offdeenway.org<br>🇫🇷 French: fr.offdeenway.org<br>🇬🇧 English: en.offdeenway.org<br>🇪🇸 Spanish: es.offdeenway.org<br>🇹🇷 Turkish: tr.offdeenway.org<br>🇩🇪 German: de.offdeenway.org<br>🇮🇩 Indonesian: id.offdeenway.org<br>🇵🇰 Urdu: ur.offdeenway.org`},
+        {q:"What is the purpose of this religious website",a:"We aim to spread authentic Islamic knowledge and bring people closer to the Quran and the Sunnah, focusing on awareness, purification, and original Islamic values."},
+        {q:"Are you affiliated with any group or movement",a:"We are not affiliated with any group or movement; we call to Islam as found in the Quran and Sunnah."},
+        {q:"Do you rely on specific fatwas",a:"We rely on the fatwas of trustworthy scholars and recognized authentic sources."},
+        {q:"How can I support this project",a:"You can support us with your prayers, by sharing the content, or spreading it to others."},
+        {q:"Can I use the website content in my project or channel",a:"Yes, as long as you mention the source and do not change the meaning or use it in an un-Islamic context."},
+        {q:"What helps me stay steadfast in my faith",a:"Maintaining prayers, keeping good company, frequent remembrance and Quran reading, and avoiding temptations."},
+        {q:"How do I start learning my religion correctly",a:"Start with learning the correct creed, then the basics of worship, regularly read the Quran with an easy explanation, and avoid unreliable sources."},
+        {q:"What is the difference between Islam, Iman, and Ihsan",a:"Islam: outward actions; Iman: inner belief; Ihsan: worshipping Allah as if you see Him. These are the three levels of religion."},
+        {q:"Any advice for reflecting on the Quran",a:"Read slowly, ponder the meanings, relate the verses to your life, use a simple explanation, and ask Allah to open your heart."},
+        {q:"What is the ruling on sharing religious content on social media",a:"Sharing authentic content from the Quran and Sunnah is virtuous, provided you verify information and avoid weak hadiths."},
+        {q:"How do I distinguish between authentic and weak hadith",a:"Refer to authentic hadith books or qualified scholars. We verify hadiths before publishing and clarify their authenticity when needed."},
+        {q:"Is full-time dedication required to seek Islamic knowledge",a:"It is not necessary; you can learn gradually as your time allows. The key is consistency."},
+        {q:"How do I deal with doubts or misconceptions about Islam",a:"Do not take doubts from non-experts. Refer to trusted scholars. Every doubt has a clear answer from the scholars."}
       ]
       // ... أكمل بقية اللغات ...
     };
 
-    let langs = Object.keys(taglines);
-
+    // Tagline logic
     const taglineEl = document.getElementById("changingTagline");
-    const languageDropdown = document.getElementById("languageDropdown");
     const browsePhraseEl = document.getElementById("browsePhrase");
-    const faqsContainer = document.getElementById("faqsContainer");
-    const subdomainButtons = document.getElementById("subdomainButtons");
-
-    let currentLang = languageDropdown.value || 'en';
+    const taglineKeys = Object.keys(taglines);
+    const browseKeys = Object.keys(browsePhrases);
+    let currentLang = 'en';
+    let taglineIndex = taglineKeys.indexOf(currentLang);
+    let browsePhraseIndex = browseKeys.indexOf(currentLang);
 
     function updateTagline(lang) {
       taglineEl.style.opacity = 0;
@@ -295,6 +181,10 @@
         taglineEl.style.opacity = 1;
       }, 400);
     }
+    setInterval(() => {
+      taglineIndex = (taglineIndex + 1) % taglineKeys.length;
+      updateTagline(taglineKeys[taglineIndex]);
+    }, 4000);
 
     function updateBrowsePhrase(lang) {
       browsePhraseEl.style.opacity = 0;
@@ -302,6 +192,27 @@
         browsePhraseEl.textContent = browsePhrases[lang] || browsePhrases['en'];
         browsePhraseEl.style.opacity = 1;
       }, 400);
+    }
+    setInterval(() => {
+      browsePhraseIndex = (browsePhraseIndex + 1) % browseKeys.length;
+      updateBrowsePhrase(browseKeys[browsePhraseIndex]);
+    }, 4000);
+
+    function setSelectTo(lang) {
+      document.getElementById('languageDropdown').value = lang;
+    }
+    setSelectTo(currentLang);
+
+    const languageDropdown = document.getElementById("languageDropdown");
+    const faqsContainer = document.getElementById("faqsContainer");
+    const subdomainButtons = document.getElementById("subdomainButtons");
+
+    function renderSubdomainButtons() {
+      subdomainButtons.innerHTML = subdomains.map(info =>
+        `<a class="subdomain-btn" href="${info.url}" target="_blank" rel="noopener" title="${info.label}">
+          ${info.flag} ${info.label}
+        </a>`
+      ).join('');
     }
 
     function renderFaqs(lang) {
@@ -319,15 +230,7 @@
       faqsContainer.dir = (isLtr ? "ltr" : "rtl");
     }
 
-    function renderSubdomainButtons() {
-      subdomainButtons.innerHTML = subdomains.map(info =>
-        `<a class="subdomain-btn" href="${info.url}" target="_blank" rel="noopener" title="${info.label}">
-          ${info.label}
-        </a>`
-      ).join('');
-    }
-
-    // فقط سؤال واحد مفتوح
+    // Only one open at a time
     window.toggleFaq = function(event, idx) {
       if(event.target.classList.contains('faq-answer')) return;
       const items = Array.from(document.querySelectorAll('.faq-item'));
@@ -342,36 +245,24 @@
 
     function changeLanguage(lang) {
       currentLang = lang;
-      languageDropdown.value = lang;
-      renderFaqs(lang);
-      taglineIndex = langs.indexOf(lang);
-      browsePhraseIndex = langs.indexOf(lang);
+      setSelectTo(lang);
       updateTagline(lang);
+      taglineIndex = taglineKeys.indexOf(lang);
       updateBrowsePhrase(lang);
+      browsePhraseIndex = browseKeys.indexOf(lang);
+      renderFaqs(lang);
     }
 
-    // البداية
-    renderFaqs(currentLang);
+    // Initial load
+    updateTagline(currentLang);
     updateBrowsePhrase(currentLang);
+    renderFaqs(currentLang);
     renderSubdomainButtons();
-
-    // التبديل التلقائي للعبارة والشعار
-    let taglineIndex = langs.indexOf(currentLang);
-    setInterval(() => {
-      taglineIndex = (taglineIndex + 1) % langs.length;
-      updateTagline(langs[taglineIndex]);
-    }, 4000);
-
-    // التبديل التلقائي لعبارة "تصفح موقعك كما تحب"
-    let browsePhraseIndex = langs.indexOf(currentLang);
-    setInterval(() => {
-      browsePhraseIndex = (browsePhraseIndex + 1) % langs.length;
-      updateBrowsePhrase(langs[browsePhraseIndex]);
-    }, 4000);
 
     languageDropdown.addEventListener('change', function() {
       changeLanguage(this.value);
     });
+
   </script>
 </body>
 </html>
