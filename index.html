@@ -49,21 +49,22 @@
     
     .tagline { 
       font-size: 20px; 
-      font-style: italic; 
-      color: #7f8c8d; 
+      font-weight: 600; 
+      color: #1d3557; 
       margin-bottom: 30px; 
       letter-spacing: 0.6px; 
-      transition: opacity 0.6s ease; 
       min-height: 28px; 
       max-width: 90vw; 
-      font-weight: 500;
+    }
+    
+    .language-select-container {
+      position: relative;
+      margin-bottom: 30px;
     }
     
     .language-select { 
       position: relative; 
-      width: 200px; 
-      margin-bottom: 30px; 
-      margin-top: 0; 
+      width: 240px; 
     }
     
     select { 
@@ -71,36 +72,43 @@
       -moz-appearance: none; 
       appearance: none; 
       width: 100%; 
-      padding: 12px 45px 12px 18px; 
-      font-size: 15px; 
+      padding: 14px 50px 14px 20px; 
+      font-size: 16px; 
       font-weight: 600; 
-      border: none; 
-      border-radius: 30px; 
-      background: linear-gradient(135deg, #2980b9, #3498db);
-      color: white; 
+      border: 2px solid #e0e7ff; 
+      border-radius: 12px; 
+      background: white;
+      color: #2c3e50; 
       cursor: pointer; 
-      box-shadow: 0 4px 15px rgba(41, 128, 185, 0.3); 
+      box-shadow: 0 4px 15px rgba(41, 128, 185, 0.15); 
       outline: none; 
       transition: all 0.3s ease;
+      background-image: linear-gradient(45deg, transparent 50%, #3498db 50%),
+                        linear-gradient(135deg, #3498db 50%, transparent 50%);
+      background-position: calc(100% - 20px) center, calc(100% - 15px) center;
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
     }
     
-    select:hover, select:focus { 
-      background: linear-gradient(135deg, #1d6fa5, #2980b9);
-      box-shadow: 0 6px 20px rgba(41, 128, 185, 0.4);
+    select:hover { 
+      border-color: #3498db;
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.25);
       transform: translateY(-2px);
     }
     
-    .language-select::after { 
-      content: "▼"; 
-      position: absolute; 
-      top: 50%; 
-      right: 15px; 
-      transform: translateY(-50%); 
-      color: white; 
-      pointer-events: none; 
-      font-size: 13px; 
-      font-weight: 700; 
-      user-select: none; 
+    select:focus {
+      border-color: #1d3557;
+      box-shadow: 0 0 0 3px rgba(29, 53, 87, 0.1);
+    }
+    
+    .language-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #3498db;
+      font-size: 18px;
+      z-index: 2;
     }
     
     .faqs-container { 
@@ -218,76 +226,174 @@
       align-items: center; 
       margin-top: 25px; 
       margin-bottom: 15px; 
-      color: #7f8c8d;
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .footer-link {
+      color: #2c3e50;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s;
+      padding: 10px 18px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    .footer-link:hover {
+      background: #3498db;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    }
+    
+    .footer-link i {
       font-size: 14px;
     }
     
-    .footer-icons {
-      display: flex;
-      gap: 15px;
-      margin-top: 10px;
-    }
-    
-    .footer-icons a {
-      color: #7f8c8d;
-      font-size: 18px;
-      transition: color 0.3s;
-    }
-    
-    .footer-icons a:hover {
-      color: #3498db;
-    }
-    
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .logo { font-size: 36px; }
       .tagline { font-size: 18px; }
       .faqs-container { font-size: 15px; padding: 0 0px; }
       .footer { max-width: 100vw; }
-      .language-select { width: 100%; max-width: 180px; }
+      .language-select { width: 100%; max-width: 240px; }
       .faq-item { padding: 15px; }
       .faq-question { font-size: 16px; }
       .faq-answer { font-size: 15px; }
+      .footer-links { 
+        gap: 12px; 
+        padding: 15px;
+      }
+      .footer-link { 
+        font-size: 14px; 
+        padding: 8px 14px;
+        flex: 1;
+        min-width: 140px;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .footer-links {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .footer-link {
+        min-width: auto;
+      }
     }
   </style>
 </head>
 <body>
   <div class="center">
     <div class="logo">DEENWAY</div>
-    <div class="tagline" id="changingTagline">Guiding hearts to the truth</div>
-    <div class="language-select">
-      <select id="languageDropdown">
-        <option value="ar">العربية</option>
-        <option value="fr">Français</option>
-        <option value="en">English</option>
-        <option value="es">Español</option>
-        <option value="de">Deutsch</option>
-        <option value="tr">Türkçe</option>
-        <option value="id">Bahasa</option>
-        <option value="ur">اردو</option>
-      </select>
+    <div class="tagline">One truth — eight languages</div>
+    
+    <div class="language-select-container">
+      <div class="language-select">
+        <i class="fas fa-globe language-icon"></i>
+        <select id="languageDropdown">
+          <option value="ar">العربية</option>
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="de">Deutsch</option>
+          <option value="tr">Türkçe</option>
+          <option value="id">Bahasa Indonesia</option>
+          <option value="ur">اردو</option>
+        </select>
+      </div>
     </div>
+    
     <div class="faqs-container" id="faqsContainer"></div>
+    
     <div class="footer">
-      <div>© 2023 DeenWay. All rights reserved.</div>
-      <div class="footer-icons">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
+      <div class="footer-links">
+        <a href="https://www.ondeenway.org/" class="footer-link" id="homeLink">
+          <i class="fas fa-home"></i>
+          <span>الموقع الرسمي</span>
+        </a>
+        <a href="https://about.ondeenway.org/" class="footer-link" id="aboutLink">
+          <i class="fas fa-info-circle"></i>
+          <span>من نحن</span>
+        </a>
+        <a href="https://ebook.ondeenway.org/" class="footer-link" id="libraryLink">
+          <i class="fas fa-book"></i>
+          <span>مكتبة DEENWAY</span>
+        </a>
+        <a href="https://contact.ondeenway.org/" class="footer-link" id="contactLink">
+          <i class="fas fa-envelope"></i>
+          <span>اتصل بنا</span>
+        </a>
       </div>
     </div>
   </div>
   <script>
-    // Taglines for 8 languages
-    const taglines = {
-      ar: "تهدي القلوب إلى الحق",
-      fr: "Guider les cœurs vers la vérité",
-      en: "Guiding hearts to the truth",
-      es: "Guiando corazones hacia la verdad",
-      de: "Die Herzen zur Wahrheit führen",
-      tr: "Kalpleri gerçeğe yönlendirmek",
-      id: "Membimbing hati menuju kebenaran",
-      ur: "دلوں کی رہنمائی حق کی طرف"
+    // Page titles for all languages
+    const pageTitles = {
+      ar: {
+        home: "الموقع الرسمي",
+        about: "من نحن",
+        library: "مكتبة DEENWAY",
+        contact: "اتصل بنا"
+      },
+      en: {
+        home: "Official Website",
+        about: "About Us",
+        library: "DEENWAY Library",
+        contact: "Contact Us"
+      },
+      fr: {
+        home: "Site Officiel",
+        about: "À Propos",
+        library: "Bibliothèque DEENWAY",
+        contact: "Contactez-Nous"
+      },
+      es: {
+        home: "Sitio Oficial",
+        about: "Acerca de Nosotros",
+        library: "Biblioteca DEENWAY",
+        contact: "Contáctenos"
+      },
+      de: {
+        home: "Offizielle Website",
+        about: "Über Uns",
+        library: "DEENWAY Bibliothek",
+        contact: "Kontaktieren Sie Uns"
+      },
+      tr: {
+        home: "Resmi Web Sitesi",
+        about: "Hakkımızda",
+        library: "DEENWAY Kütüphanesi",
+        contact: "Bize Ulaşın"
+      },
+      id: {
+        home: "Situs Resmi",
+        about: "Tentang Kami",
+        library: "Perpustakaan DEENWAY",
+        contact: "Hubungi Kami"
+      },
+      ur: {
+        home: "سرکاری ویب سائٹ",
+        about: "ہمارے بارے میں",
+        library: "DEENWAY لائبریری",
+        contact: "ہم سے رابطہ کریں"
+      }
     };
 
     // FAQs for all languages
@@ -351,7 +457,7 @@ es: [
   {q:"¿Se basan en fatwas específicas",a:"Nos basamos en las fatwas de eruditos confiables y fuentes reconocidas."},
   {q:"¿Cómo puedo apoyar este proyecto",a:"Puedes apoyarnos con tus oraciones, compartiendo el contenido o difundiéndolo."},
   {q:"¿Puedo usar el contenido del sitio en mi proyecto o canal",a:"Sí, siempre que menciones la fuente y no cambies el significado ni lo uses fuera de un contexto islámico."},
-  {q:"¿Qué me ayuda a mantenerme firme en la fe",a:"Mantener la oración, rodearse de personas rectas, recordar mucho a Allah y leer el Corán, y alejarse de las temptaciones."},
+  {q:"¿Qué me ayuda a mantenerme firme en la fe",a:"Mantener la oración, rodearse de personas rectas, recordar mucho a Allah y leer el Corán, y alejarse de las tentaciones."},
   {q:"¿Cómo empiezo a aprender mi religión correctamente",a:"Comienza por la creencia, luego la jurisprudencia básica, lee el Corán regularmente con una explicación sencilla y evita fuentes no confiables."},
   {q:"¿Cuál es la diferencia entre Islam, Iman e Ihsan",a:"Islam: acciones externas; Iman: creencia interna; Ihsan: adorar a Allah como si lo vieras. Son los tres niveles del Din."},
   {q:"¿Algún consejo para reflexionar sobre el Corán",a:"Lee despacio, reflexiona los significados, relaciona los versos con tu vida, usa una explicación sencilla y pide a Allah que abra tu corazón."},
@@ -380,16 +486,16 @@ de: [
 tr: [
   {q:"Kendi dini sorumu sorabilir miyim",a:"Evet, sorularınızı şu adrese gönderebilirsiniz: contact@ondeenway.org. Size cevap vereceğiz veya güvenilir alimlere yönlendireceğiz."},
   {q:"Site dilini nasıl değiştirebilirim",a:`Tercih ettiğiniz dilde gezinmek için şu alt alan adlarını kullanın:<br>🌍 Arapça: ondeenway.org<br>🇫🇷 Fransızca: fr.ondeenway.org<br>🇬🇧 İngilizce: en.ondeenway.org<br>🇪🇸 İspanyolca: es.ondeenway.org<br>🇹🇷 Türkçe: tr.ondeenway.org<br>🇩🇪 Almanca: de.ondeenway.org<br>🇮🇩 Endonezce: id.ondeenway.org<br>🇵🇰 Urduca: ur.ondeenway.org`},
-  {q:"Bu dini sitenin amacı nedir",a:"Doğru İslami bilgiyi yaymak, insanları Kur’an ve Sünnet’e yaklaştırmak, özgün değerlere odaklanmak istiyoruz."},
-  {q:"Herhangi bir gruba veya cemaate bağlı mısınız",a:"Herhangi bir gruba bağlı değiliz; Kur’an ve Sünnet’teki İslam’a davet ediyoruz."},
+  {q:"Bu dini sitenin amacı nedir",a:"Doğru İslami bilgiyi yaymak, insanları Kur'an ve Sünnet'e yaklaştırmak, özgün değerlere odaklanmak istiyoruz."},
+  {q:"Herhangi bir gruba veya cemaate bağlı mısınız",a:"Herhangi bir gruba bağlı değiliz; Kur'an ve Sünnet'teki İslam'a davet ediyoruz."},
   {q:"Belirli fetvalara mı dayanıyorsunuz",a:"Güvenilir alimlerin fetvalarına ve tanınmış kaynaklara dayanıyoruz."},
   {q:"Bu projeye nasıl destek olabilirim",a:"Dua edebilir, içerikleri paylaşabilir veya yayabilirsiniz."},
   {q:"Site içeriğini kendi projemde veya kanalımda kullanabilir miyim",a:"Evet, kaynağı belirtmek ve anlamı değiştirmemek şartıyla kullanabilirsiniz."},
-  {q:"Dinimde sabit kalmama ne yardımcı olur",a:"Namaza devam, salihlerle beraberlik, çokça zikir ve Kur’an okumak, fitneden uzak durmak."},
-  {q:"Dinimi doğru öğrenmeye nasıl başlayabilirim",a:"Önce doğru inancı öğrenin, sonra ibadet bilgilerini, ardından tefsirli Kur’an okuyun, güvenilmez kaynaklardan uzak durun."},
-  {q:"İslam, iman ve ihsan arasındaki fark nedir",a:"İslam: dış ameller; iman: kalpten inanmak; ihsan: Allah’ı görüyormuş gibi ibadet etmek. Bunlar dinin üç derecesidir."},
-  {q:"Kur’an üzerinde tefekkür için tavsiyeleriniz nedir",a:"Yavaş okuyun, anlamları düşünün, ayetleri hayatınızla ilişkilendirin, kolay tefsir kullanın, Allah’tan kalp açıklığı isteyin."},
-  {q:"Dini içerik sosyal medyada paylaşılabilir mi",a:"Kur’an ve Sünnet’ten doğru içerik paylaşmak güzeldir; bilgileri doğrulayın ve zayıf hadislerden kaçının."},
+  {q:"Dinimde sabit kalmama ne yardımcı olur",a:"Namaza devam, salihlerle beraberlik, çokça zikir ve Kur'an okumak, fitneden uzak durmak."},
+  {q:"Dinimi doğru öğrenmeye nasıl başlayabilirim",a:"Önce doğru inancı öğrenin, sonra ibadet bilgilerini, ardından tefsirli Kur'an okuyun, güvenilmez kaynaklardan uzak durun."},
+  {q:"İslam, iman ve ihsan arasındaki fark nedir",a:"İslam: dış ameller; iman: kalpten inanmak; ihsan: Allah'ı görüyormuş gibi ibadet etmek. Bunlar dinin üç derecesidir."},
+  {q:"Kur'an üzerinde tefekkür için tavsiyeleriniz nedir",a:"Yavaş okuyun, anlamları düşünün, ayetleri hayatınızla ilişkilendirin, kolay tefsir kullanın, Allah'tan kalp açıklığı isteyin."},
+  {q:"Dini içerik sosyal medyada paylaşılabilir mi",a:"Kur'an ve Sünnet'ten doğru içerik paylaşmak güzeldir; bilgileri doğrulayın ve zayıf hadislerden kaçının."},
   {q:"Sahih hadis ile zayıf hadis nasıl ayırt edilir",a:"Güvenilir hadis kitaplarına veya alimlere danışın. Biz de yayınlamadan önce hadisleri kontrol ediyoruz."},
   {q:"İlmi tamamen öğrenmeye adamak şart mı",a:"Gerekli değil; zamanınıza göre yavaşça öğrenebilirsiniz. Önemli olan devamlılıktır."},
   {q:"İslam hakkında şüphelerle nasıl başa çıkılır",a:"Şüpheleri ehil olmayanlardan almayın, güvenilir alimlere danışın. Her şüpheye ilmi bir cevap vardır."}
@@ -397,16 +503,16 @@ tr: [
 id: [
   {q:"Bisakah saya bertanya tentang agama secara pribadi",a:"Ya, silakan kirim pertanyaan Anda ke: contact@ondeenway.org. Kami akan menjawab atau mengarahkan ke ulama terpercaya."},
   {q:"Bagaimana cara mengubah bahasa situs",a:`Untuk menjelajah dengan bahasa pilihan Anda, gunakan subdomain berikut:<br>🌍 Arab: ondeenway.org<br>🇫🇷 Prancis: fr.ondeenway.org<br>🇬🇧 Inggris: en.ondeenway.org<br>🇪🇸 Spanyol: es.ondeenway.org<br>🇹🇷 Turki: tr.ondeenway.org<br>🇩🇪 Jerman: de.ondeenway.org<br>🇮🇩 Indonesia: id.ondeenway.org<br>🇵🇰 Urdu: ur.ondeenway.org`},
-  {q:"Apa tujuan situs agama ini",a:"Kami ingin menyebarkan pengetahuan Islam yang benar, mendekatkan orang pada Al-Qur’an dan Sunnah, serta menanamkan nilai-nilai asli Islam."},
-  {q:"Apakah kalian tergabung dalam kelompok tertentu",a:"Kami tidak tergabung dalam kelompok manapun; kami mengajak kepada Islam sesuai Al-Qur’an dan Sunnah."},
+  {q:"Apa tujuan situs agama ini",a:"Kami ingin menyebarkan pengetahuan Islam yang benar, mendekatkan orang pada Al-Qur'an dan Sunnah, serta menanamkan nilai-nilai asli Islam."},
+  {q:"Apakah kalian tergabung dalam kelompok tertentu",a:"Kami tidak tergabung dalam kelompok manapun; kami mengajak kepada Islam sesuai Al-Qur'an dan Sunnah."},
   {q:"Apakah kalian mengikuti fatwa tertentu",a:"Kami mengikuti fatwa ulama terpercaya dan sumber-sumber sahih."},
   {q:"Bagaimana cara mendukung proyek ini",a:"Dukung kami dengan doa, membagikan konten, atau menyebarkannya ke orang lain."},
-  {q:"Bolehkah saya menggunakan konten situs di proyek/konten saya",a:"Boleh, asalkan mencantumkan sumbernya dan tidak mengubah makna atau digunakan pada konteks tidak syar’i."},
-  {q:"Apa yang membantu saya tetap teguh dalam agama",a:"Menjaga shalat, berteman dengan orang saleh, banyak berdzikir dan membaca Al-Qur’an, serta menjauhi fitnah."},
-  {q:"Bagaimana mulai belajar agama dengan benar",a:"Mulai dari akidah yang benar, kemudian fikih ibadah, rutin membaca Al-Qur’an dengan tafsir mudah, dan hindari sumber yang tidak jelas."},
+  {q:"Bolehkah saya menggunakan konten situs di proyek/konten saya",a:"Boleh, asalkan mencantumkan sumbernya dan tidak mengubah makna atau digunakan pada konteks tidak syar'i."},
+  {q:"Apa yang membantu saya tetap teguh dalam agama",a:"Menjaga shalat, berteman dengan orang saleh, banyak berdzikir dan membaca Al-Qur'an, serta menjauhi fitnah."},
+  {q:"Bagaimana mulai belajar agama dengan benar",a:"Mulai dari akidah yang benar, kemudian fikih ibadah, rutin membaca Al-Qur'an dengan tafsir mudah, dan hindari sumber yang tidak jelas."},
   {q:"Apa perbedaan Islam, Iman, dan Ihsan",a:"Islam: amal lahiriah; Iman: kepercayaan hati; Ihsan: beribadah seakan-akan melihat Allah. Itulah tiga tingkatan agama."},
-  {q:"Tips untuk tadabbur Al-Qur’an",a:"Baca perlahan, renungi maknanya, kaitkan ayat dengan hidup Anda, gunakan tafsir yang mudah, dan berdoalah agar Allah membuka hati."},
-  {q:"Bolehkah membagikan konten agama di media sosial",a:"Membagikan konten sahih dari Al-Qur’an dan Sunnah itu baik, asal memastikan kebenaran dan jauhi hadits lemah."},
+  {q:"Tips untuk tadabbur Al-Qur'an",a:"Baca perlahan, renungi maknanya, kaitkan ayat dengan hidup Anda, gunakan tafsir yang mudah, dan berdoalah agar Allah membuka hati."},
+  {q:"Bolehkah membagikan konten agama di media sosial",a:"Membagikan konten sahih dari Al-Qur'an dan Sunnah itu baik, asal memastikan kebenaran dan jauhi hadits lemah."},
   {q:"Bagaimana membedakan hadits sahih dan dhaif",a:"Rujuk kitab hadits terpercaya atau tanya ulama. Kami memverifikasi hadits sebelum dipublikasikan."},
   {q:"Haruskah fokus penuh untuk menuntut ilmu agama",a:"Tidak wajib; Anda bisa belajar bertahap sesuai waktu. Yang penting adalah konsistensi."},
   {q:"Bagaimana menghadapi syubhat tentang Islam",a:"Jangan ambil syubhat dari bukan ahlinya. Konsultasikan ke ulama terpercaya. Setiap syubhat pasti ada jawabannya."}
@@ -430,23 +536,7 @@ ur: [
 ]
     };
 
-    // Tagline logic
-    const taglineEl = document.getElementById("changingTagline");
-    const taglineKeys = Object.keys(taglines);
     let currentLang = 'en';
-    let taglineIndex = taglineKeys.indexOf(currentLang);
-
-    function updateTagline(lang) {
-      taglineEl.style.opacity = 0;
-      setTimeout(() => {
-        taglineEl.textContent = taglines[lang] || taglines['en'];
-        taglineEl.style.opacity = 1;
-      }, 400);
-    }
-    setInterval(() => {
-      taglineIndex = (taglineIndex + 1) % taglineKeys.length;
-      updateTagline(taglineKeys[taglineIndex]);
-    }, 4000);
 
     function setSelectTo(lang) {
       document.getElementById('languageDropdown').value = lang;
@@ -456,11 +546,18 @@ ur: [
     const languageDropdown = document.getElementById("languageDropdown");
     const faqsContainer = document.getElementById("faqsContainer");
 
+    function updateFooterLinks(lang) {
+      const titles = pageTitles[lang] || pageTitles['en'];
+      document.getElementById('homeLink').querySelector('span').textContent = titles.home;
+      document.getElementById('aboutLink').querySelector('span').textContent = titles.about;
+      document.getElementById('libraryLink').querySelector('span').textContent = titles.library;
+      document.getElementById('contactLink').querySelector('span').textContent = titles.contact;
+    }
+
     function renderFaqs(lang) {
       const faqsList = faqs[lang] || faqs['en'];
       const isLtr = ['en','fr','es','de','tr','id'].includes(lang);
       faqsContainer.innerHTML = faqsList.map((faq, idx) => {
-        // علامة استفهام مع مسافة صغيرة في النهاية (حسب اللغة)
         let qMark = isLtr ? '<span class="qmark-ltr">?</span>' : '<span class="qmark-ar">؟</span>';
         return `
         <div class="faq-item${isLtr ? ' ltr' : ''}" onclick="toggleFaq(event, ${idx})">
@@ -488,13 +585,12 @@ ur: [
     function changeLanguage(lang) {
       currentLang = lang;
       setSelectTo(lang);
-      updateTagline(lang);
-      taglineIndex = taglineKeys.indexOf(lang);
+      updateFooterLinks(lang);
       renderFaqs(lang);
     }
 
     // Initial load
-    updateTagline(currentLang);
+    updateFooterLinks(currentLang);
     renderFaqs(currentLang);
 
     languageDropdown.addEventListener('change', function() {
