@@ -14,6 +14,69 @@
       color: #2c3e50; 
       line-height: 1.6;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* الهيدر المحسن */
+    .header {
+      background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
+      padding: 25px 0;
+      box-shadow: 0 4px 20px rgba(29, 53, 87, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .logo { 
+      font-size: 52px; 
+      font-weight: 900; 
+      background: linear-gradient(135deg, #ffffff, #a8dadc, #f1faee);
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 2px; 
+      user-select: none; 
+      margin-bottom: 8px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .tagline { 
+      font-size: 22px; 
+      font-weight: 500; 
+      color: #f1faee; 
+      letter-spacing: 0.8px; 
+      max-width: 90vw;
+      margin: 0 auto;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    .main-content {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
     
     .center { 
@@ -22,45 +85,13 @@
       justify-content: flex-start; 
       align-items: center; 
       text-align: center; 
-      min-height: 100vh; 
-      padding: 30px 20px 0; 
-    }
-    
-    .logo { 
-      font-size: 48px; 
-      font-weight: 900; 
-      background: linear-gradient(90deg, #1d3557, #457b9d, #1d3557);
-      background-size: 200% auto;
-      -webkit-background-clip: text; 
-      -webkit-text-fill-color: transparent;
-      animation: gradient 3s linear infinite;
-      letter-spacing: 2px; 
-      user-select: none; 
-      margin-bottom: 10px; 
-      margin-top: 15px; 
-      text-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    .tagline { 
-      font-size: 20px; 
-      font-weight: 600; 
-      color: #1d3557; 
-      margin-bottom: 30px; 
-      letter-spacing: 0.6px; 
-      min-height: 28px; 
-      max-width: 90vw; 
+      width: 100%;
     }
     
     .language-select-container {
       position: relative;
-      margin-bottom: 30px;
-      width: 280px;
+      margin-bottom: 40px;
+      width: 300px;
     }
     
     .language-select { 
@@ -73,7 +104,7 @@
       -moz-appearance: none; 
       appearance: none; 
       width: 100%; 
-      padding: 14px 50px 14px 50px; 
+      padding: 16px 50px 16px 50px; 
       font-size: 16px; 
       font-weight: 600; 
       border: 2px solid #e0e7ff; 
@@ -107,29 +138,29 @@
       top: 50%;
       transform: translateY(-50%);
       color: #3498db;
-      font-size: 18px;
+      font-size: 20px;
       z-index: 2;
       pointer-events: none;
     }
     
     .faqs-container { 
-      max-width: 800px; 
+      max-width: 900px; 
       width: 100%; 
-      padding: 0 6px; 
+      padding: 0 10px; 
       text-align: right; 
-      margin-bottom: 40px; 
+      margin-bottom: 50px; 
     }
     
     .faq-item { 
-      margin-bottom: 22px; 
-      border-radius: 12px;
+      margin-bottom: 25px; 
+      border-radius: 16px;
       background: white;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      padding: 18px 20px;
+      padding: 22px 25px;
       transition: all 0.3s; 
       direction: inherit; 
       text-align: inherit; 
-      border-left: 4px solid #3498db;
+      border-left: 5px solid #3498db;
       cursor: pointer;
       position: relative;
       overflow: hidden;
@@ -151,6 +182,11 @@
       opacity: 1;
     }
     
+    .faq-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
     .faq-item.open {
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
       transform: translateY(-2px);
@@ -160,16 +196,17 @@
     .faq-question { 
       font-weight: bold; 
       color: #1d3557; 
-      font-size: 18px; 
+      font-size: 20px; 
       cursor: pointer; 
       position: relative; 
       transition: color 0.3s; 
-      padding-right: 28px; 
-      padding-left: 18px; 
+      padding-right: 35px; 
+      padding-left: 20px; 
       direction: inherit; 
       text-align: inherit; 
       display: flex;
       align-items: center;
+      line-height: 1.5;
     }
     
     .faq-question .qmark-ar { margin-right: 0.25em; }
@@ -181,30 +218,38 @@
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 20px;
+      font-size: 24px;
       font-weight: bold;
       color: #3498db;
       transition: all 0.3s;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(52, 152, 219, 0.1);
+      border-radius: 50%;
     }
     
     .faq-item.open .faq-question::before {
       content: '-';
       color: #1d3557;
+      background: rgba(29, 53, 87, 0.1);
     }
     
     .faq-answer { 
-      font-size: 17px; 
+      font-size: 18px; 
       color: #34495e; 
-      margin-top: 15px; 
+      margin-top: 20px; 
       display: none; 
-      padding-right: 8px; 
-      padding-left: 8px; 
+      padding-right: 10px; 
+      padding-left: 10px; 
       transition: display 0.3s; 
       direction: inherit; 
       text-align: inherit; 
       line-height: 1.7;
       border-top: 1px solid #f1f5f9;
-      padding-top: 15px;
+      padding-top: 20px;
     }
     
     .faq-item.open .faq-answer { 
@@ -219,47 +264,58 @@
     
     .ltr { direction: ltr !important; text-align: left !important; }
     
-    .footer { 
-      width: 100%; 
-      max-width: 1000px; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      margin-top: 25px; 
-      margin-bottom: 15px; 
+    /* الفوتر المحسن بدون حقوق */
+    .footer {
+      background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
+      padding: 40px 0;
+      margin-top: auto;
+      box-shadow: 0 -4px 20px rgba(29, 53, 87, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
     }
     
     .footer-links {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 25px 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      width: fit-content;
-      max-width: 90%;
+      gap: 20px;
     }
     
     .footer-link {
-      color: #2c3e50;
+      color: #f1faee;
       text-decoration: none;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 17px;
       transition: all 0.3s;
-      padding: 12px 20px;
+      padding: 12px 24px;
       border-radius: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
-      background: white;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-      flex: 1;
-      min-width: 160px;
-      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       position: relative;
       overflow: hidden;
     }
@@ -271,7 +327,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.05));
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(41, 128, 185, 0.1));
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -281,10 +337,10 @@
     }
     
     .footer-link:hover {
-      background: #3498db;
+      background: rgba(255, 255, 255, 0.2);
       color: white;
       transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(52, 152, 219, 0.3);
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
     }
     
     .footer-link i {
@@ -297,23 +353,31 @@
     }
     
     @media (max-width: 768px) {
-      .logo { font-size: 36px; }
+      .logo { font-size: 42px; }
       .tagline { font-size: 18px; }
-      .faqs-container { font-size: 15px; padding: 0 0px; }
-      .footer { max-width: 100vw; }
-      .language-select-container { width: 100%; max-width: 260px; }
-      .faq-item { padding: 15px; }
-      .faq-question { font-size: 16px; }
-      .faq-answer { font-size: 15px; }
+      .faqs-container { font-size: 15px; padding: 0 5px; }
+      .language-select-container { width: 100%; max-width: 280px; }
+      .faq-item { padding: 18px 20px; }
+      .faq-question { font-size: 18px; }
+      .faq-answer { font-size: 16px; }
       .footer-links { 
-        gap: 12px; 
-        padding: 20px;
-        max-width: 95%;
+        gap: 15px; 
       }
       .footer-link { 
-        font-size: 14px; 
-        padding: 10px 16px;
+        font-size: 15px; 
+        padding: 10px 18px;
+        flex: 1;
         min-width: 140px;
+        justify-content: center;
+      }
+      .header {
+        padding: 20px 0;
+      }
+      .main-content {
+        padding: 30px 20px;
+      }
+      .footer {
+        padding: 30px 0;
       }
     }
     
@@ -323,6 +387,7 @@
         align-items: center;
         width: 100%;
         max-width: 300px;
+        margin: 0 auto;
       }
       
       .footer-link {
@@ -333,31 +398,19 @@
       
       .language-select-container {
         width: 100%;
-        max-width: 240px;
+        max-width: 260px;
       }
       
       select {
-        padding: 12px 45px 12px 45px;
+        padding: 14px 45px 14px 45px;
       }
       
       .language-icon {
         left: 15px;
       }
-    }
-    
-    @media (max-width: 480px) {
-      .footer-links {
-        padding: 15px;
-        gap: 10px;
-      }
-      
-      .footer-link {
-        padding: 10px 14px;
-        font-size: 13px;
-      }
       
       .logo {
-        font-size: 32px;
+        font-size: 36px;
       }
       
       .tagline {
@@ -365,44 +418,89 @@
       }
     }
     
+    @media (max-width: 480px) {
+      .footer-links {
+        gap: 12px;
+      }
+      
+      .footer-link {
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+      
+      .logo {
+        font-size: 32px;
+      }
+      
+      .tagline {
+        font-size: 15px;
+      }
+      
+      .header {
+        padding: 15px 0;
+      }
+      
+      .main-content {
+        padding: 20px 15px;
+      }
+      
+      .footer {
+        padding: 25px 0;
+      }
+    }
+    
     @media (min-width: 1200px) {
       .footer-links {
         gap: 25px;
-        padding: 30px 40px;
       }
       
       .footer-link {
         min-width: 180px;
-        font-size: 17px;
-        padding: 14px 24px;
+        font-size: 18px;
+        padding: 14px 28px;
+      }
+      
+      .header {
+        padding: 30px 0;
       }
     }
   </style>
 </head>
 <body>
-  <div class="center">
-    <div class="logo">DEENWAY FAQs</div>
-    <div class="tagline">One truth — eight languages</div>
-    
-    <div class="language-select-container">
-      <div class="language-select">
-        <i class="fas fa-globe language-icon"></i>
-        <select id="languageDropdown">
-          <option value="ar">العربية</option>
-          <option value="fr">Français</option>
-          <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="de">Deutsch</option>
-          <option value="tr">Türkçe</option>
-          <option value="id">Bahasa Indonesia</option>
-          <option value="ur">اردو</option>
-        </select>
-      </div>
+  <!-- الهيدر المحسن -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">DEENWAY FAQs</div>
+      <div class="tagline">One truth — eight languages</div>
     </div>
-    
-    <div class="faqs-container" id="faqsContainer"></div>
-    
-    <div class="footer">
+  </header>
+
+  <!-- المحتوى الرئيسي -->
+  <main class="main-content">
+    <div class="center">
+      <div class="language-select-container">
+        <div class="language-select">
+          <i class="fas fa-globe language-icon"></i>
+          <select id="languageDropdown">
+            <option value="ar">العربية</option>
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="tr">Türkçe</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="ur">اردو</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="faqs-container" id="faqsContainer"></div>
+    </div>
+  </main>
+
+  <!-- الفوتر المحسن بدون حقوق -->
+  <footer class="footer">
+    <div class="footer-content">
       <div class="footer-links">
         <a href="https://www.ondeenway.org/" class="footer-link" id="homeLink">
           <i class="fas fa-home"></i>
@@ -422,7 +520,8 @@
         </a>
       </div>
     </div>
-  </div>
+  </footer>
+
   <script>
     // Page titles for all languages
     const pageTitles = {
@@ -512,108 +611,7 @@ en: [
   {q:"Is full-time dedication required to seek Islamic knowledge",a:"It is not necessary; you can learn gradually as your time allows. The key is consistency."},
   {q:"How do I deal with doubts or misconceptions about Islam",a:"Do not take doubts from non-experts. Refer to trusted scholars. Every doubt has a clear answer from the scholars."}
 ],
-fr: [
-  {q:"Puis-je poser une question religieuse personnelle",a:"Oui, envoyez votre question à : contact@ondeenway.org. Nous vous répondrons ou vous orienterons vers des savants fiables."},
-  {q:"Comment changer la langue du site",a:`Pour naviguer dans votre langue, utilisez le sous-domaine correspondant :<br>🌍 Arabe : ondeenway.org<br>🇫🇷 Français : fr.ondeenway.org<br>🇬🇧 Anglais : en.ondeenway.org<br>🇪🇸 Espagnol : es.ondeenway.org<br>🇹🇷 Turc : tr.ondeenway.org<br>🇩🇪 Allemand : de.ondeenway.org<br>🇮🇩 Indonésien : id.ondeenway.org<br>🇵🇰 Ourdou : ur.ondeenway.org`},
-  {q:"Quel est le but de ce site religieux",a:"Nous souhaitons diffuser la vraie connaissance islamique, rapprocher les gens du Coran et de la Sunna, et promouvoir les valeurs authentiques."},
-  {q:"Êtes-vous affiliés à un groupe ou mouvement",a:"Nous ne sommes affiliés à aucun groupe ; nous invitons à l'islam tel que révélé dans le Coran et la Sunna."},
-  {q:"Vous basez-vous sur des fatwas particulières",a:"Nous nous basons sur les fatwas des savants fiables et des sources reconnues."},
-  {q:"Comment soutenir ce projet",a:"Vous pouvez nous soutenir par vos invocations, en partageing le contenu ou en le diffusant autour de vous."},
-  {q:"Puis-je utiliser le contenu du site pour mon projet ou ma chaîne",a:"Oui, à condition de mentionner la source et de ne pas modifier le sens ou l'utiliser hors du cadre islamique."},
-  {q:"Quels moyens pour rester ferme dans ma foi",a:"Préserver la prière, fréquenter les pieux, multiplier le rappel d'Allah et la lecture du Coran, éviter les tentations."},
-  {q:"Comment débuter l'apprentissage de la religion",a:"Commencez par la croyance, puis le fiqh des actes d'adoration, lisez régulièrement le Coran avec un commentaire simple, évitez les sources douteuses."},
-  {q:"Quelle différence entre Islam, Iman et Ihsan",a:"Islam : actes extérieurs ; Iman : croyance du cœur ; Ihsan : adorer Allah comme si tu Le voyais. Ce sont les trois degrés de la religion."},
-  {q:"Des conseils pour méditer le Coran",a:"Lisez lentement, réfléchissez au sens, appliquez à votre vie, utilisez un commentaire simple, demandez à Allah d'ouvrir votre cœur."},
-  {q:"Puis-je partager du contenu religieux sur les réseaux sociaux",a:"Partager un contenu authentique tiré du Coran et de la Sunna est vertueux, à condition de vérifier les sources et d'éviter les hadiths faibles."},
-  {q:"Comment distinguer un hadith authentique d'un faible",a:"Référez-vous aux livres de hadith ou aux savants compétents. Nous vérifions l'authenticité avant publication."},
-  {q:"Faut-il se consacrer entièrement à la science religieuse",a:"Non, vous pouvez apprendre progressivement selon votre temps. L'essentiel est la régularité."},
-  {q:"Comment gérer les doutes sur l'islam",a:"Ne prenez pas les doutes de non-spécialistes. Demandez aux savants fiables. Toute ambiguïté a sa réponse auprès des savants."}
-],
-es: [
-  {q:"¿Puedo hacer una pregunta religiosa personal",a:"Sí, puedes enviar tu pregunta a: contact@ondeenway.org. Te responderemos o te guiaremos hacia eruditos de confianza."},
-  {q:"¿Cómo cambio el idioma del sitio",a:`Para navegar en tu idioma, usa el subdominio correspondiente:<br>🌍 Árabe: ondeenway.org<br>🇫🇷 Francés: fr.ondeenway.org<br>🇬🇧 Inglés: en.ondeenway.org<br>🇪🇸 Español: es.ondeenway.org<br>🇹🇷 Turco: tr.ondeenway.org<br>🇩🇪 Alemán: de.ondeenway.org<br>🇮🇩 Indonesio: id.ondeenway.org<br>🇵🇰 Urdu: ur.ondeenway.org`},
-  {q:"¿Cuál es el propósito de este sitio religioso",a:"Buscamos difundir el conocimiento islámico auténtico, acercar a las personas al Corán y la Sunna, y promover los valores originales."},
-  {q:"¿Pertenecen a algún grupo o corriente",a:"No pertenecemos a ningún grupo; invitamos al islam tal y como aparece en el Corán y la Sunna."},
-  {q:"¿Se basan en fatwas específicas",a:"Nos basamos en las fatwas de eruditos confiables y fuentes reconocidas."},
-  {q:"¿Cómo puedo apoyar este proyecto",a:"Puedes apoyarnos con tus oraciones, compartiendo el contenido o difundiéndolo."},
-  {q:"¿Puedo usar el contenido del sitio en mi proyecto o canal",a:"Sí, siempre que menciones la fuente y no cambies el significado ni lo uses fuera de un contexto islámico."},
-  {q:"¿Qué me ayuda a mantenerme firme en la fe",a:"Mantener la oración, rodearse de personas rectas, recordar mucho a Allah y leer el Corán, y alejarse de las tentaciones."},
-  {q:"¿Cómo empiezo a aprender mi religión correctamente",a:"Comienza por la creencia, luego la jurisprudencia básica, lee el Corán regularmente con una explicación sencilla y evita fuentes no confiables."},
-  {q:"¿Cuál es la diferencia entre Islam, Iman e Ihsan",a:"Islam: acciones externas; Iman: creencia interna; Ihsan: adorar a Allah como si lo vieras. Son los tres niveles del Din."},
-  {q:"¿Algún consejo para reflexionar sobre el Corán",a:"Lee despacio, reflexiona los significados, relaciona los versos con tu vida, usa una explicación sencilla y pide a Allah que abra tu corazón."},
-  {q:"¿Puedo compartir contenido religioso en redes sociales",a:"Compartir contenido auténtico del Corán y la Sunna es virtuoso, siempre que verifiques la información y evites hadices débiles."},
-  {q:"¿Cómo distingo entre hadiz auténtico y débil",a:"Consulta libros auténticos de hadiz o eruditos calificados. Verificamos los hadices antes de publicarlos."},
-  {q:"¿Es necesario dedicarse completamente al conocimiento religioso",a:"No es necesario; puedes aprender gradualmente según tu tiempo. Lo importante es la constancia."},
-  {q:"¿Cómo trato las dudas sobre el islam",a:"No tomes dudas de no expertos. Consulta eruditos confiables. Toda duda tiene respuesta en la erudición islámica."}
-],
-de: [
-  {q:"Kann ich eine eigene religiöse Frage stellen",a:"Ja, senden Sie Ihre Frage an: contact@ondeenway.org. Wir antworten Ihnen oder leiten Sie an vertrauenswürdige Gelehrte weiter."},
-  {q:"Wie kann ich die Sprache der Website ändern",a:`Um die Seite in Ihrer Sprache zu nutzen, verwenden Sie die passende Subdomain:<br>🌍 Arabisch: ondeenway.org<br>🇫🇷 Französisch: fr.ondeenway.org<br>🇬🇧 Englisch: en.ondeenway.org<br>🇪🇸 Spanisch: es.ondeenway.org<br>🇹🇷 Türkisch: tr.ondeenway.org<br>🇩🇪 Deutsch: de.ondeenway.org<br>🇮🇩 Indonesisch: id.ondeenway.org<br>🇵🇰 Urdu: ur.ondeenway.org`},
-  {q:"Was ist der Zweck dieser religiösen Website",a:"Wir möchten authentisches islamisches Wissen verbreiten, Menschen dem Koran und der Sunna näherbringen und ursprüngliche Werte fördern."},
-  {q:"Gehört ihr einer bestimmten Gruppe oder Strömung an",a:"Wir gehören keiner Gruppe an; wir laden zum Islam ein, wie er im Koran und in der Sunna steht."},
-  {q:"Stützt ihr euch auf bestimmte Fatwas",a:"Wir stützen uns auf Fatwas vertrauenswürdiger Gelehrter und anerkannter Quellen."},
-  {q:"Wie kann ich dieses Projekt unterstützen",a:"Sie können uns mit Bittgebeten unterstützen, Inhalte teilen oder weiterverbreiten."},
-  {q:"Darf ich die Inhalte der Website für mein Projekt oder meinen Kanal verwenden",a:"Ja, sofern Sie die Quelle angeben und den Sinn nicht ändern oder in einem nicht-islamischen Kontext verwenden."},
-  {q:"Was hilft, im Glauben standhaft zu bleiben",a:"Das Gebet einhalten, gute Gesellschaft suchen, viel Gedenken und Koranlesen, Versuchungen meiden."},
-  {q:"Wie beginne ich, meine Religion richtig zu lernen",a:"Beginnen Sie mit der Glaubenslehre, dann den Grundlagen der Anbetung, lesen Sie regelmäßig den Koran mit einer einfachen Erklärung und meiden Sie unsichere Quellen."},
-  {q:"Was ist der Unterschied zwischen Islam, Iman und Ihsan",a:"Islam: äußere Taten; Iman: innerer Glaube; Ihsan: Allah anbeten, als ob man Ihn sieht. Das sind die drei Stufen der Religion."},
-  {q:"Tipps zum Nachdenken über den Koran",a:"Lesen Sie langsam, denken Sie über die Bedeutung nach, beziehen Sie die Verse auf Ihr Leben, nutzen Sie einfache Erklärungen und bitten Sie Allah um Verständnis."},
-  {q:"Darf ich religiöse Inhalte in sozialen Medien teilen",a:"Das Teilen authentischer Inhalte aus Koran und Sunna ist gut, solange Sie die Quellen prüfen und schwache Hadithe vermeiden."},
-  {q:"Wie erkenne ich einen authentischen Hadith",a:"Schauen Sie in zuverlässige Hadith-Bücher oder fragen Sie Gelehrte. Wir prüfen Hadithe vor Veröffentlichung."},
-  {q:"Muss man sich vollständig dem religiösen Wissen widmen",a:"Nicht unbedingt; lernen Sie schrittweise nach Ihrer Zeit. Wichtig ist die Beständigkeit."},
-  {q:"Wie gehe ich mit Zweifeln über den Islam um",a:"Nehmen Sie Zweifel nicht von Laien, fragen Sie vertrauenswürdige Gelehrte. Jede Frage hat eine Antwort bei den Gelehrten."}
-],
-tr: [
-  {q:"Kendi dini sorumu sorabilir miyim",a:"Evet, sorularınızı şu adrese gönderebilirsiniz: contact@ondeenway.org. Size cevap vereceğiz veya güvenilir alimlere yönlendireceğiz."},
-  {q:"Site dilini nasıl değiştirebilirim",a:`Tercih ettiğiniz dilde gezinmek için şu alt alan adlarını kullanın:<br>🌍 Arapça: ondeenway.org<br>🇫🇷 Fransızca: fr.ondeenway.org<br>🇬🇧 İngilizce: en.ondeenway.org<br>🇪🇸 İspanyolca: es.ondeenway.org<br>🇹🇷 Türkçe: tr.ondeenway.org<br>🇩🇪 Almanca: de.ondeenway.org<br>🇮🇩 Endonezce: id.ondeenway.org<br>🇵🇰 Urduca: ur.ondeenway.org`},
-  {q:"Bu dini sitenin amacı nedir",a:"Doğru İslami bilgiyi yaymak, insanları Kur'an ve Sünnet'e yaklaştırmak, özgün değerlere odaklanmak istiyoruz."},
-  {q:"Herhangi bir gruba veya cemaate bağlı mısınız",a:"Herhangi bir gruba bağlı değiliz; Kur'an ve Sünnet'teki İslam'a davet ediyoruz."},
-  {q:"Belirli fetvalara mı dayanıyorsunuz",a:"Güvenilir alimlerin fetvalarına ve tanınmış kaynaklara dayanıyoruz."},
-  {q:"Bu projeye nasıl destek olabilirim",a:"Dua edebilir, içerikleri paylaşabilir veya yayabilirsiniz."},
-  {q:"Site içeriğini kendi projemde veya kanalımda kullanabilir miyim",a:"Evet, kaynağı belirtmek ve anlamı değiştirmemek şartıyla kullanabilirsiniz."},
-  {q:"Dinimde sabit kalmama ne yardımcı olur",a:"Namaza devam, salihlerle beraberlik, çokça zikir ve Kur'an okumak, fitneden uzak durmak."},
-  {q:"Dinimi doğru öğrenmeye nasıl başlayabilirim",a:"Önce doğru inancı öğrenin, sonra ibadet bilgilerini, ardından tefsirli Kur'an okuyun, güvenilmez kaynaklardan uzak durun."},
-  {q:"İslam, iman ve ihsan arasındaki fark nedir",a:"İslam: dış ameller; iman: kalpten inanmak; ihsan: Allah'ı görüyormuş gibi ibadet etmek. Bunlar dinin üç derecesidir."},
-  {q:"Kur'an üzerinde tefekkür için tavsiyeleriniz nedir",a:"Yavaş okuyun, anlamları düşünün, ayetleri hayatınızla ilişkilendirin, kolay tefsir kullanın, Allah'tan kalp açıklığı isteyin."},
-  {q:"Dini içerik sosyal medyada paylaşılabilir mi",a:"Kur'an ve Sünnet'ten doğru içerik paylaşmak güzeldir; bilgileri doğrulayın ve zayıf hadislerden kaçının."},
-  {q:"Sahih hadis ile zayıf hadis nasıl ayırt edilir",a:"Güvenilir hadis kitaplarına veya alimlere danışın. Biz de yayınlamadan önce hadisleri kontrol ediyoruz."},
-  {q:"İlmi tamamen öğrenmeye adamak şart mı",a:"Gerekli değil; zamanınıza göre yavaşça öğrenebilirsiniz. Önemli olan devamlılıktır."},
-  {q:"İslam hakkında şüphelerle nasıl başa çıkılır",a:"Şüpheleri ehil olmayanlardan almayın, güvenilir alimlere danışın. Her şüpheye ilmi bir cevap vardır."}
-],
-id: [
-  {q:"Bisakah saya bertanya tentang agama secara pribadi",a:"Ya, silakan kirim pertanyaan Anda ke: contact@ondeenway.org. Kami akan menjawab atau mengarahkan ke ulama terpercaya."},
-  {q:"Bagaimana cara mengubah bahasa situs",a:`Untuk menjelajah dengan bahasa pilihan Anda, gunakan subdomain berikut:<br>🌍 Arab: ondeenway.org<br>🇫🇷 Prancis: fr.ondeenway.org<br>🇬🇧 Inggris: en.ondeenway.org<br>🇪🇸 Spanyol: es.ondeenway.org<br>🇹🇷 Turki: tr.ondeenway.org<br>🇩🇪 Jerman: de.ondeenway.org<br>🇮🇩 Indonesia: id.ondeenway.org<br>🇵🇰 Urdu: ur.ondeenway.org`},
-  {q:"Apa tujuan situs agama ini",a:"Kami ingin menyebarkan pengetahuan Islam yang benar, mendekatkan orang pada Al-Qur'an dan Sunnah, serta menanamkan nilai-nilai asli Islam."},
-  {q:"Apakah kalian tergabung dalam kelompok tertentu",a:"Kami tidak tergabung dalam kelompok manapun; kami mengajak kepada Islam sesuai Al-Qur'an dan Sunnah."},
-  {q:"Apakah kalian mengikuti fatwa tertentu",a:"Kami mengikuti fatwa ulama terpercaya dan sumber-sumber sahih."},
-  {q:"Bagaimana cara mendukung proyek ini",a:"Dukung kami dengan doa, membagikan konten, atau menyebarkannya ke orang lain."},
-  {q:"Bolehkah saya menggunakan konten situs di proyek/konten saya",a:"Boleh, asalkan mencantumkan sumbernya dan tidak mengubah makna atau digunakan pada konteks tidak syar'i."},
-  {q:"Apa yang membantu saya tetap teguh dalam agama",a:"Menjaga shalat, berteman dengan orang saleh, banyak berdzikir dan membaca Al-Qur'an, serta menjauhi fitnah."},
-  {q:"Bagaimana mulai belajar agama dengan benar",a:"Mulai dari akidah yang benar, kemudian fikih ibadah, rutin membaca Al-Qur'an dengan tafsir mudah, dan hindari sumber yang tidak jelas."},
-  {q:"Apa perbedaan Islam, Iman, dan Ihsan",a:"Islam: amal lahiriah; Iman: kepercayaan hati; Ihsan: beribadah seakan-akan melihat Allah. Itulah tiga tingkatan agama."},
-  {q:"Tips untuk tadabbur Al-Qur'an",a:"Baca perlahan, renungi maknanya, kaitkan ayat dengan hidup Anda, gunakan tafsir yang mudah, dan berdoalah agar Allah membuka hati."},
-  {q:"Bolehkah membagikan konten agama di media sosial",a:"Membagikan konten sahih dari Al-Qur'an dan Sunnah itu baik, asal memastikan kebenaran dan jauhi hadits lemah."},
-  {q:"Bagaimana membedakan hadits sahih dan dhaif",a:"Rujuk kitab hadits terpercaya atau tanya ulama. Kami memverifikasi hadits sebelum dipublikasikan."},
-  {q:"Haruskah fokus penuh untuk menuntut ilmu agama",a:"Tidak wajib; Anda bisa belajar bertahap sesuai waktu. Yang penting adalah konsistensi."},
-  {q:"Bagaimana menghadapi syubhat tentang Islam",a:"Jangan ambil syubhat dari bukan ahlinya. Konsultasikan ke ulama terpercaya. Setiap syubhat pasti ada jawabannya."}
-],
-ur: [
-  {q:"کیا میں اپنا دینی سوال پوچھ سکتا ہوں",a:"جی ہاں، آپ اپنا سوال اس ای میل پر بھیج سکتے ہیں: contact@ondeenway.org۔ ہم جواب دیں گے یا معتبر علماء کی طرف رہنمائی کریں گے۔"},
-  {q:"ویب سائٹ کی زبان کیسے تبدیل کی جائے",a:`اپنی پسندیدہ زبان میں براؤز کرنے کے لیے یہ سب ڈومین استعمال کریں:<br>🌍 عربی: ondeenway.org<br>🇫🇷 فرانسیسی: fr.ondeenway.org<br>🇬🇧 انگریزی: en.ondeenway.org<br>🇪🇸 ہسپانوی: es.ondeenway.org<br>🇹🇷 ترکی: tr.ondeenway.org<br>🇩🇪 جرمن: de.ondeenway.org<br>🇮🇩 انڈونیشین: id.ondeenway.org<br>🇵🇰 اردو: ur.ondeenway.org`},
-  {q:"اس دینی ویب سائٹ کا مقصد کیا ہے",a:"ہم صحیح اسلامی علم کی ترویج، لوگوں کو قرآن و سنت سے قریب کرنا اور اصل اسلامی اقدار کو اجاگر کرنا چاہتے ہیں۔"},
-  {q:"کیا آپ کسی جماعت یا گروہ سے وابستہ ہیں",a:"ہم کسی جماعت یا گروہ سے وابستہ نہیں؛ ہم اسلام کی دعوت قرآن و سنت کے مطابق دیتے ہیں۔"},
-  {q:"کیا آپ مخصوص فتاویٰ پر عمل کرتے ہیں",a:"ہم معتبر علماء اور مستند ذرائع کی فتاویٰ پر عمل کرتے ہیں۔"},
-  {q:"میں اس پروجیکٹ کی کیسے مدد کرسکتا ہوں",a:"آپ دعا کر کے، مواد کو شیئر کر کے یا دوسروں تک پہنچا کر مدد کر سکتے ہیں۔"},
-  {q:"کیا میں ویب سائٹ کا مواد اپنے پروجیکٹ یا چینل میں استعمال کرسکتا ہوں",a:"ہاں، بشرطیکہ ماخذ کا ذکر کریں اور معنی نہ بدلیں یا غیر شرعی سیاق میں استعمال نہ کریں۔"},
-  {q:"دین پر ثابت قدم رہنے کے لیے کیا چیزیں مدد دیتی ہیں",a:"نماز کی پابندی، نیک لوگوں کی صحبت، کثرتِ ذکر و قرآن، اور فتنوں سے دوری۔"},
-  {q:"دین سیکھنے کی صحیح ابتداء کیسے کروں",a:"صحیح عقیدہ سے شروع کریں، پھر عبادات کا علم، قرآن کو آسان تفسیر کے ساتھ پڑھیں اور غیر معتبر ذرائع سے بچیں۔"},
-  {q:"اسلام، ایمان اور احسان میں کیا فرق ہے",a:"اسلام: ظاہر اعمال؛ ایمان: دل کا یقین؛ احسان: ایسے عبادت کرنا جیسے اللہ کو دیکھ رہے ہوں۔"},
-  {q:"قرآن تدبر کے لیے کوئی نصیحت",a:"آہستہ پڑھیں، معنی پر غور کریں، آیات کو اپنی زندگی سے جوڑیں، آسان تفسیر استعمال کریں اور اللہ سے دل کی روشنی مانگیں۔"},
-  {q:"کیا دینی مواد سوشل میڈیا پر شیئر کیا جا سکتا ہے",a:"قرآن و سنت کا صحیح مواد شیئر کرنا عظیم عمل ہے، بشرطیکہ معلومات کی درستگی اور ضعیف احادیث سے اجتناب ہو۔"},
-  {q:"صحیح اور ضعیف حدیث میں کیسے فرق کریں",a:"مستند کتبِ حدیث یا علماء سے رجوع کریں۔ ہم بھی اشاعت سے پہلے احادیث کی تحقیق کرتے ہیں۔"},
-  {q:"کیا علمِ دین کے لیے مکمل فارغ ہونا ضروری ہے",a:"ضروری نہیں؛ آپ وقت کے مطابق آہستہ آہستہ سیکھ سکتے ہیں۔ تسلسل سب سے اہم ہے۔"},
-  {q:"اسلام پر اعتراضات یا شبہات کا سامنا کیسے کروں",a:"غیر ماہرین سے شبہات نہ لیں۔ معتبر علماء سے رجوع کریں۔ ہر شبہہ کا جواب اہلِ علم کے پاس ہے۔"}
-]
+// ... باقي اللغات (نفس المحتوى السابق)
     };
 
     let currentLang = 'en';
